@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+<style>
+    @import url('../css/common.css');
+   
+    </style>
+
+    <article class="for_array">
+        <h2>for & array</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+  
+
+    <script>
+        
+       var result = document.querySelector('.for_array div');
+     
+        var arr = [80,90,60,70];
+        //key값 0, value값 80
+        var arr2 = ['<p></p>','<p></p>','<p></p>'];
+         //console.log(arr2);
+        //div 자식요소로 p tag element 3개를 만든다
+         for(var i=0;i<arr2.length;i++){
+               result.innerHTML += arr2[i];
+             //i++ 1씩 증가한다
+         }
+         var pTag = document.querySelectorAll('.for_array div p');
+        //복수개의 element를 잡아낼 수 있다
+        //array와 유사한 형태를 갖는다
+       // console.log(pTag[0]);
+        //Nodelist() 유사배열
+        //p tag 자식요소로 <span>0</span>  
+         for(var i=0;i<arr2.length;i++){
+               pTag[i].innerHTML += '<span>'+i+'</span>';
+
+                      }
+        var arr3 = 'hello world';
+        console.log(arr3.length);
+        
+         for(var i=0;i<arr3.length;i++){
+              result.innerHTML += '<em>'+arr3[i]+'</em>';
+
+                      }
+        var h2 = document.querySelector('h2');
+//        h2 tag 전체를 잡아낸다
+        var h2Txt = h2.textContent;
+//        h2에 있는 text만 따로 잡는다
+    console.log(h2Txt[0]);
+        
+        h2.textContent='';
+        for(var i=0;i<h2Txt.length;i++){
+              h2.innerHTML += '<em>'+h2Txt[i]+'</em>';
+
+                      }
+        
+        //증감or감소 연산자
+        var z =10;
+        console.log(z++);
+        //명령전에는 z값은 10이다
+        //z++ z값을 증감하라는 명령을 내리면 아래 console의 z값은 11이 된다
+        console.log(z);
+        console.log(z--);
+        console.log(z);
+        console.log(++z);
+        console.log(--z);
+        //        ++를 앞에 붙이면 현재 자리에서 바로 증감된 값을 확인할 수 있다
+        z = z+1;        console.log(z);
+        z = z-1;        console.log(z);
+        z += 1;        console.log(z);
+        z -= 1;          console.log(z);
+    </script>
+<!--    ------------------------------ex------------------------->
+    <article class="ex1">
+        <h2>array ex1</h2>
+        <div>
+            <input type="number" name="ex1">
+            <input type="number" name="ex2">
+            <input type="number" name="ex3">
+            <button>확인</button>
+        </div>
+    </article>
+  <script>
+      var inputNode =document.querySelectorAll('.ex1 input');
+      var buttonNode =document.querySelector('.ex1 button');
+     
+      buttonNode.addEventListener('click',function()
+                                  {
+          //반복문을 이용하여 input value값을 console창에 출력하시오.
+          for(var i=0;i<inputNode.length;i++){
+            
+              console.log(inputNode[i].value);
+              sum = Number(inputNode[0].value)+Number(inputNode[1].value)+Number(inputNode[2].value);
+              console.log(sum);
+          }
+      });
+    </script>
+    
+
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+
+    <article class="for">
+        <h2>for(초기값;조건;증감값)</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+    <article class="for_calc">
+        <h2>for(초기값;조건;증감값)</h2>
+        <div>
+            출력값(1-10 합계)
+        </div>
+    </article>
+
+
+
+
+    <script>
+        
+        var result = document.querySelector('.for div');
+        
+        
+//        for(초기값;조건;증감값)
+        for(var i = 1; i<=10; i=1+i){
+            result.innerHTML += '<br>'+i;
+        }
+        
+        
+          var result = document.querySelector('.for_calc div');
+        var sum=0;
+        
+//        for(초기값;조건;증감값)
+        for(var i = 1; i<=10; i=1+i){
+             //할당연산자가 아직 진행되지 않은 모습
+             result.innerHTML += '<br>'+sum+'+'
+           +i;
+           
+            sum += i;
+          //할당연산자가 진행된 모습
+        result.innerHTML += '='+sum;    
+           
+           
+        }
+        console.log(sum);
+       
+         result.innerHTML += '<br>전체합계를 2로 나눈 값: '+(sum/2);    
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+    
+    
+<!--    ----------------2--------------------->
+ <article class="for_if">
+        <h2>for반복문, if 조건문</h2>
+        <div>
+            출력값(7을 찾으시오/ 짝수 합과 개수를 출력하시오)
+        </div>
+    </article>
+
+
+
+
+    <script>
+        
+        var result = document.querySelector('.for_if div');
+        var sum=0;
+//      0은  변수가 숫자타입이라고 선언한 것
+          var len=0;
+//        for(초기값;조건;증감값)
+        for(var i = 1; i<=10; i=1+i){
+            if(i==7){
+            result.innerHTML += '<br>'+i;
+        }
+            //i를 2로 나눈 값의 나머지값이 0이면 i를 출력하라
+            if(i%2==0){
+                result.innerHTML += '<br>'+i;
+                sum += i;
+              len += 1;
+            }
+         
+            
+        }
+        result.innerHTML += '<br>짝수의 합: '+sum;
+         result.innerHTML += '<br>짝수의 갯수: '+len;
+     
+        
+        
+        
+        
+        
+        
+        
+    </script>
+<!--    3------------------------->
+ <article class="for_if_ex">
+        <h2>for반복문, if 조건문</h2>
+        <div>
+            출력값(
+            1.1부터 30까지의 합 구하기
+            2.1~30까지의 홀수 출력하기
+            3.1~30까지의 홀수의 합 구하기
+            4.1~30까지의 홀수의 개수 구하기)
+        </div>
+    </article>
+
+    <script>
+        var result = document.querySelector('.for_if_ex div');
+        var total=0;
+        var sum=0;
+        var len=0;
+        for(var i=1;i<=30;i=i+1){
+             total += i;
+           
+            if(i%2 != 0){
+                    result.innerHTML += '<br>1~30까지의 홀수: '+i; 
+                sum += i;
+                len += 1;
+            }
+           
+        }
+         result.innerHTML += '<br>1부터 30까지의 합: '+total;
+result.innerHTML += '<br>1~30까지의 홀수의 합: '+sum;
+        result.innerHTML += '<br>1~30까지의 홀수의 개수: '+len;
+        
+     
+        
+        
+        
+        
+        
+    </script>
+</body></html>

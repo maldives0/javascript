@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+    <style>
+        @import url('../css/common.css');
+
+        .fun_ex1 div {
+            position: relative;
+            border: 1px solid #000;
+        }
+
+        .fun_ex1 div p {
+            width: 100px;
+            height: 100px;
+            background: #0f0;
+        }
+
+        .fun_ex1 div span {
+            position: absolute;
+            left: 960px;
+            top: 0;
+            width: 10px;
+            height: 10px;
+            background: #000;
+        }
+
+    </style>
+
+
+
+    <article class="fun_ex1">
+        <h2>fun(Ex1) </h2>
+        <button>start</button>
+        <div>
+            <p></p>
+            <span></span>
+        </div>
+    </article>
+    <script>
+        var ex1 = document.querySelector('.fun_ex1 div');
+        var exP = ex1.querySelector('p');
+        var exSpan = ex1.querySelector('span');
+        var exBtn = document.querySelector('.fun_ex1 button');
+
+
+        //offsetLeft 기준점 왼쪽으로부터 거리,
+        //offsetTop 기준점 위쪽으로부터 거리
+        //var x = exSpan.style.left = "960px";
+        //case1: var x; 
+        //        글로벌 영역에서 변수를 선언한 후 fun1영역에서 x의 구체적인 값을 설정해주면 fun2에서도 x값을 쓸 수 있다-전역변수
+        function fun1() {
+            x = exSpan.offsetLeft;
+            //case1: var x = exSpan.offsetLeft;
+            //            fun1에서 x변수를 선언하면 이 공간 안에서만 작동한다-지역변수
+
+            //exP.style.marginLeft = x+'px';
+            fun2(x);
+        }
+
+        function fun2(a) {
+            //           a:매개변수는 어떤 것으로든 선언해도 좋다
+            var w = exSpan.offsetWidth;
+            var h = exSpan.offsetHeight;
+            console.log(x);
+            exP.style = "margin-left:" + a + "px; width:" + w + "px; height:" + h + "px;";
+
+        }
+
+        exBtn.addEventListener('click', fun1);
+
+    </script>
+
+    <style>
+        img {
+            width: 100px;
+        }
+
+        .fun_ex2 div {
+            position: relative;
+        }
+
+        .fun_ex2 p {
+            border: 2px solid #00f;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: .5s;
+        }
+
+    </style>
+    <article class="fun_ex2">
+        <h2>fun(Ex2) </h2>
+
+        <div>
+            <img data-num="0" src="../img/p03-18-04.jpg" alt="">
+            <img data-num="1" src="../img/p03-18-08.jpg" alt="">
+            <img data-num="2" src="../img/p03-19-01.jpg" alt="">
+            <img data-num="3" src="../img/p03-15-01.jpg" alt="">
+            <img data-num="4" src="../img/unbrella.webp" alt="">
+            <img data-num="5" src="../img/photodog01.jpg" alt="">
+            <p></p>
+        </div>
+    </article>
+    <script>
+        var exImg = document.querySelectorAll('.fun_ex2 div img');
+        var ex2P = document.querySelector('.fun_ex2 div p');
+
+
+
+
+
+
+
+
+        function funImg(n) {
+
+
+            var l = exImg[n].offsetLeft;
+            var t = exImg[n].offsetTop;
+            var w = exImg[n].offsetWidth;
+            var h = exImg[n].offsetHeight;
+
+
+
+            ex2P.style = "left:" + l + "px; top:" + t + "px; width:" + w + "px; height:" + h + "px;";
+        }
+        //case3 img속성에 data-num="0" 넣어주기
+
+        for (var i = 0; i < exImg.length; i++) {
+            exImg[i].addEventListener('click', function() {
+                var idx = this.dataset.num;
+                //   dataset.num:         data-num을 가리킨다
+                //this: exImg[i] 내가 클릭하는 이미지를 가리킨다 
+                funImg(idx);
+            });
+        }
+        //   case 2 
+        //let: a라는 주소의 i, b라는 주소의 i, c라는 주소의 i로 선언된 공간이 다르게 만든다
+        //        for(let i=0; i<exImg.length;i++){
+        //        exImg[i].addEventListener('click', function(){
+        //            console.log(i);
+        //            funImg(i);
+        //                                                     });
+        //        }
+
+
+        // case 1 i값을 경우에 따라 다르게 만들기
+        //        exImg[1].addEventListener('click', function(){funImg(1);});
+        //        exImg[2].addEventListener('click', function(){funImg(2);});
+
+    </script>
+    <style>
+        .fun_ex3 img {
+            width: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .fun_ex3 div {
+            position: relative;
+            height: 100px;
+        }
+
+    </style>
+    <article class="fun_ex3">
+        <h2>fun(Ex3) </h2>
+
+        <div>
+            <!--
+          
+            <img src="../img/p03-15-01.jpg" alt="">
+            <img  src="../img/unbrella.webp" alt="">
+            <img  src="../img/p03-18-04.jpg" alt="">
+-->
+
+        </div>
+    </article>
+    <script>
+        var ex3 = document.querySelector('.fun_ex3 div');
+        
+        var imgAdd = ["../img/p03-15-01.jpg", "../img/unbrella.webp", "../img/p03-18-04.jpg"];
+        for(let i=0;i<imgAdd.length;i++){
+       ex3.innerHTML += "<img src=" + imgAdd[i] + ">";}
+            
+       console.log(ex3);
+         var imgAll = document.querySelectorAll('.fun_ex3 div img');
+        for(let i=0;i<imgAll.length;i++){
+        imgAll[i].style = "left:"+(i*100)+"px";}
+        
+
+    </script>
+</body>
+
+</html>

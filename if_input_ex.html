@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+   
+    
+    <div class="bank">
+        <input placeholder="보내실 금액" type="number" name="cost">
+        
+         <input type="submit" name="btn1">
+         
+         <input placeholder="비밀번호" type="password" name="pw">
+          <input type="submit" name="btn2">
+    </div>
+<div class="success1"></div>
+   <div class="success2">
+    </div>
+
+
+    <script>
+        
+        
+        var cost = document.querySelector('input[name=cost]');
+        var pw = document.querySelector('input[name=pw]');
+        var btn1 = document.querySelector('input[name=btn1]');
+         var btn2 = document.querySelector('input[name=btn2]');
+        var success1 = document.querySelector('.success1');
+         var success2 = document.querySelector('.success2');
+        
+       
+        
+        btn1.addEventListener('click',function(){
+             var costValue = cost.value;
+           
+      costValue = Number(costValue);
+             console.log(typeof costValue);
+            if( 0< costValue && costValue <= 3000 ){
+                success1.textContent='확인되었습니다.이체를 완료하기 위해 비밀번호를 입력해주세요';
+            }else{
+                success1.textContent='금액은 0원 이상 3000원 이하만 가능합니다.';
+            }
+            
+        })
+        
+            
+        
+       
+
+        btn2.addEventListener('click', function() {
+            
+            var pwValue = pw.value;
+            if (pwValue == '1111' && success1 = '확인되었습니다.이체를 완료하기 위해 비밀번호를 입력해주세요' ) {
+                success2.textContent = '이체가 완료되었습니다.';
+            } else {
+                 success2.textContent = '다시 입력해주세요.';
+            }
+
+
+        })
+
+
+        //       
+
+        //console.log(result);
+    </script>
+</body></html>

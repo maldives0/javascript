@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+   
+  </head>
+  <body>
+   <div class="promt_result"></div>
+   <div class="confirm_result"></div>
+   
+   <script>
+      var p_result = document.querySelector('.promt_result');
+        var c_result = document.querySelector('.confirm_result');
+       p_result.innerHTML = ' <h1>hello</h1>';
+//       innerHTML 실제 테그로 인지함
+        c_result.textContent = 'world';
+       
+//       
+       var p_data1 = prompt('당신 이름은?');
+        var p_data2 = prompt('당신이 좋아하는 과일는?');
+        var p_data3 = prompt('당신이 좋아하는 숫자는?');
+        p_result.innerHTML = p_data1 +'님이 좋아하는 과일은 ' + p_data2 +'이고 좋아하는 숫자는 '+ p_data3 + '입니다';
+                       
+//       p_result.innerHTML = p_data1;
+       //------------------------------------confirm------------------------------------- 
+//       Boolean() 
+//       확인 true/취소 false 값만 나옴
+       var c_data = confirm('퇴근하시겠습니까?');
+       
+         console.log(c_data);
+//       에러가 발생한 지점 위에서는 에러가 발생하지 않는다. 에러 나기 전까지는 확인할 수 있으나 그 아래는 모두 죽는다
+        c_result.textContent = c_data;
+       
+       p_data3 = Number(p_data3);
+//       연산할 수 있는 상태로 바꾸기 위해 string값을 number type으로 바꾼다
+        p_data3 = String(p_data3);
+       console.log(typeof p_data3);
+//       console창에 log데이터로 c_data값을 불러온다
+       
+       alert( c_data );
+//       결과값을 또 다른 창이 열려서 보여줌
+//       함수는 함수명 뒤에 ()가 나온다
+      </script>
+  </body>
+</html>

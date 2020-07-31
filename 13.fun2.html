@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+    <style>
+        @import url('../css/common.css');
+    </style>
+
+    <article class="fun_s1">
+        <h2>fun & array </h2>
+        <p>
+            <button class="min">최소값</button>
+            <button class="max">최대값</button>
+        </p>
+        <div>출력값</div>
+    </article>
+
+
+    <script>
+        var s1 = document.querySelector('.fun_s1 div');
+        var minBtn = document.querySelector('.fun_s1 p .min');
+        var maxBtn = document.querySelector('.fun_s1 p .max');
+        var arr = [80, 60, 40];
+        var max = 0;
+        var min = 100;
+
+        function fun1(a) {
+            for (var i in a) {
+                //console.log(a[i]);
+                if (max < a[i]) {
+                    max = a[i];
+                }
+                if (min > a[i]) {
+                    min = a[i];
+                }
+
+                s1.innerHTML = "<br> 큰수(" + max + ")";
+                s1.innerHTML += "<br> 작은수(" + min + ")";
+
+            }
+
+            console.log(Math.max(...a));
+            console.log(Math.min(...a));
+        }
+
+        fun1(arr);
+        minBtn.addEventListener('click', function() {
+            alert(min);
+        });
+        maxBtn.addEventListener('click', function() {
+            alert(max);
+        });
+    </script>
+
+    <!--    -------------------369------------------->
+    <article class="fun_s2">
+        <h2>fun & array </h2>
+
+        <div>출력값<br></div>
+    </article>
+    <script>
+        var s2 = document.querySelector('.fun_s2 div');
+        var tn;
+
+
+        function fun2(a) {
+
+
+
+
+            for (var i = 1; i <= 100; i++) {
+
+
+var a = i%10;
+                if (a%3 == 0 && a) {
+                    s2.innerHTML += " * <br>";
+                     continue;   
+                   
+                    //     continue;        바로 for문으로 가서 i를 하나 증가시킨다
+//                     break; 조건이 true가 될 때 멈춘다
+                }
+                
+//                { s2.innerHTML += " * <br>";}else{
+//                     s2.innerHTML += " "+ i;
+//                }
+
+
+               
+ s2.innerHTML += " "+ i;
+            }
+
+        }
+
+        fun2();
+    </script>
+
+</body></html>

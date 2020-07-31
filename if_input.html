@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+    <div class="login">
+        <input type="text" name="id">
+        <input type="password" name="pw">
+        <input type="submit" name="ok">
+        
+          
+    </div>
+    <div class="result"></div>
+    
+    <div class="bank">
+        <input type="text" name="cost">
+        
+         <input type="submit" name="btn1">
+         <input type="password" name="pw">
+          <input type="submit" name="btn2">
+    </div>
+<div class="success1">
+   <div class="success2">
+    </div>
+
+    </div>
+    <script>
+        
+        
+        var cost = document.querySelector('input[name=cost]');
+        var pw = document.querySelector('input[name=pw]');
+        var btn = document.querySelector('input[name=btn]');
+        var success = document.querySelector('.success');
+        
+       
+        
+        btn1.addEventListener('click',function(){
+             var costValue = cost.value;
+      
+            if( costValue <= '300' ){
+                success1.textContent='이체가 완료되었습니다.';
+            }else{
+                success1.textContent='금일 이체 가능 금액을 초과하였습니다. 다시 입력해주세요.';
+            }
+        })
+        
+        
+        
+        
+        var id = document.querySelector('input[name=id]');
+
+        var pw = document.querySelector('input[name=pw]');
+
+        var ok = document.querySelector('input[name=ok]');
+
+        var result = document.querySelector('.result');
+
+
+        //1.변수에 id값을 받는다
+        //2.변수에 pw값을 받는다
+        //3.if조건문을 활용하여 id, pw를 비교한다
+        //4.true or false일 때 결과값을 result에 출력한다
+
+        ok.addEventListener('click', function() {
+            var idValue = id.value;
+//            사용자가 입력한 값(.value)를 idValue라고 정의한다 
+            var pwValue = pw.value;
+            if (idValue == 'momo' && pwValue == '1111') {
+                result.textContent = '환영합니다.';
+            } else {
+                result.textContent = '다시 입력해주세요.';
+            }
+
+
+        })
+
+
+        //       
+
+        //console.log(result);
+    </script>
+</body></html>

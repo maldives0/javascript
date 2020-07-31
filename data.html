@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+
+    <article class="calc_1">
+        <h2>산술연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+    <article class="calc_2">
+        <h2>할당연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+    <article class="calc_3">
+        <h2>비교연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+    <article class="calc_4">
+        <h2>배열(array)</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+
+    <!--
+    <div class="selector">
+        
+    </div>
+-->
+
+
+
+    <script>
+        //        var slt = document.querySelector('.selector');
+        //        var price;
+        //       
+        //       
+        //        price.textContent= 10 + '$';
+        //        if(20 > 10){
+        //            var result= 30
+        //        }
+        var dataType = Number(10);
+        console.log(typeof dataType);
+        var dataType = String(10);
+        console.log(typeof dataType);
+        var dataType = Array(10, 20);
+        console.log(typeof dataType);
+        //literal type
+        var dataType = 10;
+        var dataType = '10';
+        var dataType = [10, 20];
+
+        var calc_1 = document.querySelector('.calc_1 div');
+        calc_1.textContent = '10+10 =>' + (10 + 10);
+        calc_1.innerHTML += '<br> 20*10 =>' + (20 * 10);
+        calc_1.innerHTML += '<br> 2**3 =>' + (2 ** 3);
+        calc_1.innerHTML += '<br> 30/10 =>' + (30 / 10)
+        calc_1.innerHTML += '<br> 26 % 5 =>' + (26 % 5);
+
+        console.log('10+10 =>' + (10 + 10));
+        console.log('20*10 =>' + (20 * 10));
+        console.log('2**3 =>' + (2 ** 3));
+        //제곱근 2가 3개
+        console.log('30/10 =>' + (30 / 10));
+        console.log('26 % 5 =>' + (26 % 5));
+        //나누고 난 나머지값 얻어오기
+
+        //할당연산자
+        //             +=값이 갱신되지 않고 추가된다
+        var ex1 = 10;
+//        ex1 += 2;
+//        ex1 -= 2;
+//        ex1 *= 2;
+//        ex1 /= 2;
+//        ex1 %= 2;
+
+        //        (ex1 += 1) 1씩 증가시킴
+        //        (ex1 += 2) 2씩 증가시킴
+        //(((2*2)*2)*2)
+        //        4
+        //        8
+        //        16
+
+        var calc_2 = document.querySelector('.calc_2 div');
+        calc_2.textContent = 'ex1 += 2' + (ex1 += 2);
+        calc_2.innerHTML += '<br>  ex1 -= 2' + (ex1 -= 2);
+        calc_2.innerHTML += '<br>  ex1 *= 2' + (ex1 *= 2);
+        calc_2.innerHTML += '<br> ex1 /= 2' + (ex1 /= 2)
+        calc_2.innerHTML += '<br> ex1 %= 2' + (ex1 %= 2);
+
+        //비교연산자
+
+        //        var calc_3 = document.querySelector('.calc_3 div');
+        //        10 == 10 좌항과 우항의 값이 같으면 true
+        //        10 === 10 좌항과 우항의 type & data이 같으면 true
+        //        10 != 20 좌항과 우항의 값이 다르면 true
+        //        10 !=== '10' 좌항과 우항의 값과 타입이 다르면 true
+        //        20 < 10 좌항이 우항보다 크면 true
+        //        20 >= 10 좌항이 우항보다 크거나 같으면 true
+
+        var calc_3 = document.querySelector('.calc_3 div');
+        calc_3.textContent = ' 10 == 10 좌항과 우항의 값이 같으면 ' + (10 == 10);
+        calc_3.innerHTML += '<br>   10 === 10 좌항과 우항의 type & data이 같으면 ' + (10 === 10);
+        calc_3.innerHTML += '<br>  10 != 20 좌항과 우항의 값이 다르면 ' + (10 != 20);
+        calc_3.innerHTML += '<br>10 !== 20 좌항과 우항의 값과 타입이 다르면 ' + (10 !== '10');
+        calc_3.innerHTML += '<br> 20 > 10 좌항이 우항보다 크면 ' + (20 > 10);
+        calc_3.innerHTML += '<br> 20 >= 10 좌항이 우항보다 크거나 같으면 ' + (20 >= 10);
+        console.log(ex1);
+
+        calc_3.innerHTML += '<br>[조건문]';
+        calc_3.innerHTML += '<br>//비교연산자의 값에 따라 2개의 실행 명령 중 한개만 실행된다';
+        calc_3.innerHTML += '<br>if(비교연산자(true or false)){';
+        calc_3.innerHTML += '<br>조건이 true면 실행';
+        calc_3.innerHTML += '<br>}else{';
+        calc_3.innerHTML += '<br>    조건이 false면 실행}';
+        
+        var calc_4 = document.querySelector('.calc_4 div');
+        var arr = [80,90,60,50,40,70];
+        console.log(arr[0]);
+        
+//        []색인값으로 데이터 찾기
+        var total = arr[0]+arr[1]+arr[2]+arr[3]+arr[4]+arr[5];
+        console.log(total);
+        var avg = total / arr.length;
+        console.log('총점:'+total+'/평균:'+avg);
+        
+        calc_4.innerHTML += 'var arr = [80,90,60,50,40,70]';
+            calc_4.innerHTML += '<br>var total = arr[0]+arr[1]+arr[2]+arr[3]+arr[4]+arr[5]';
+            calc_4.innerHTML += '<br>var avg = total / arr.length';
+            calc_4.innerHTML += '<br>console.log('+'총점:'+'+total+'+'/평균:'+'+avg)';
+//        calc_4.innerHTML += '<br>'+arr[0];
+//        calc_4.innerHTML += '<br>'+arr[1];
+//        calc_4.innerHTML += '<br>'+arr[2];
+//        calc_4.innerHTML += '<br>'+arr[3];
+//        calc_4.innerHTML += '<br>'+arr[4];
+//        calc_4.innerHTML += '<br>'+arr[5];
+//        
+        
+       for(var i=0; i<arr.length; i++){ calc_4.innerHTML += '<br>'+arr[i];}
+         //중괄호 안에 있는 명령을 반복할 때 쓴다
+           
+        
+        
+        
+          <article class="ex1">
+        <h2>array ex1</h2>
+        <div>
+            <input type="number" name="ex1">
+            <input type="number" name="ex2">
+            <input type="number" name="ex3">
+            <button>확인</button>
+        </div>
+    </article>
+  <script>
+      var inputNode =document.querySelectorAll('.ex1 input');
+     var num = 10;
+     // console.log(num++ * 2);
+//    num++  즉시 값을 올려가 안됨으로 값은 num=10
+      //다음 명령에서 num=11
+     // console.log(++num * 2);
+      //++num 즉시 값을 올리므로 num=12
+      var arr = [10,20,30,50,60,70];
+      console.log(arr.length);
+//      arr의 개수
+      console.log(arr[2]);
+      //3번째 arr의 값 출력
+      for(var i=0;i<arr.length;i++){
+//          6번의 명령이 실행된다
+      }
+    </script>
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </script>
+</body></html>

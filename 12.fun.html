@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+    <style>
+        @import url('../css/common.css');
+    </style>
+
+    <article class="fun_s1">
+        <h2>fun bacsic</h2>
+        <div>함수를 이용한 명령 반복해서 실행하기</div>
+    </article>
+
+
+    <script>
+        var s1 = document.querySelector('.fun_s1 div');
+
+        function funS1() {
+            s1.textContent = '1.hello';
+        }
+        funS1();
+
+        function funS1_2(a) {
+            //             a는 중괄호 안에서만 쓸 수 있다
+            s1.innerHTML += "<br>" + a;
+        }
+        funS1_2('2.hello');
+        funS1_2('3.hello');
+     
+       
+    </script>
+    
+<!--    ---------------------------2------------------------------------------------------------>
+  <article class="fun_s2">
+        <h2>fun (함수를 이용한 연산2)</h2>
+        <p>
+            <input type="text" name="a">
+            <input type="text" name="b">
+            <button>합계</button>
+        </p>
+        <div>출력값</div>
+    </article>
+
+
+    <script>
+        var s2 = document.querySelector('.fun_s2 div');
+       var s2Button = document.querySelector('.fun_s2 button');
+        var s2A = document.querySelector('.fun_s2 input[name=a]');
+        var s2B = document.querySelector('.fun_s2 input[name=b]');
+
+        function funS2(a,b) {
+            s2.textContent = a+b;
+        }
+        s2Button.addEventListener('click',function(){
+           
+            console.log( parseInt(s2A.value) + parseInt(s2B.value));
+            funS2(parseInt(s2A.value), parseInt(s2B.value));
+//            ParseInt정수형태로 변환, 숫자를 제외한 문자열 버리기
+        });
+        
+        
+        
+    </script>
+<!--------------------------3------------------------------------------>
+<style>
+    .fun_s3 input{transition:.5s;}
+    </style>
+       <article class="fun_s3">
+        <h2>fun (함수를 이용한 오브젝트 이동)</h2>
+        <p>
+            <input type="text" name="a">
+           
+            <button>이동</button>
+        </p>
+        <div>출력값</div>
+    </article>
+
+
+    <script>
+        var s3 = document.querySelector('.fun_s3 div');
+       var s3Button = document.querySelector('.fun_s3 button');
+        var s3A = document.querySelector('.fun_s3 input[name=a]');
+        var move = 0;
+
+        function funS3(a) {
+            s3A.style.marginLeft = a+"px";
+//            s3A.style="margin-left:apx"
+             s3.innerHTML = a;
+        }
+       
+        s3Button.addEventListener('click',function(){
+           move += parseInt(s3A.value);
+            funS3(move);
+          
+        });
+      //-----------------------------------------------------
+        function arg(){
+//            ...Arg
+//            arguments: arg의 값을 뿌려준다
+             console.log(arguments);
+//             for(var i=0; i<arguments.length;i++){
+//             console.log(arguments[i]);
+                 for(var i in arguments){
+             console.log(arguments[i]);
+        }
+           
+        }
+        
+         arg(50,70,80,90,520,60,20,10,30,10);
+        
+//        product=[
+//            {'a01':[1000,'상품제목','상세내용','옵션']},
+//            {'a02':[1000,'상품제목','상세내용','옵션']},
+//            {'a03':[1000,'상품제목','상세내용','옵션']},
+//            {'a04':[1000,'상품제목','상세내용','옵션']},
+//            {'a05':[1000,'상품제목','상세내용','옵션']},
+//            {'a06':[1000,'상품제목','상세내용','옵션']}
+//            중괄호 이름:'a01', value값:[1000,'상품제목','상세내용','옵션']
+//            product['a01'] = [1000,'상품제목','상세내용','옵션']
+//            배열 안에 배열이 또 있다
+        
+        
+    </script>
+
+</body></html>

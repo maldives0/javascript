@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+    <style>
+        @import url('../css/common.css');
+
+        .fun_s3 div {
+            width: 60px;
+            height: 60px;
+            background: #f00;
+            /*            transition:1s;*/
+        }
+    </style>
+
+
+
+    <article class="fun_s3">
+        <h2>fun & array </h2>
+        <button>start</button>
+        <div>출력값</div>
+    </article>
+    <script>
+        var s3 = document.querySelector('.fun_s3 div');
+        var btn = document.querySelector('.fun_s3 button');
+        //        s3.style = "width:60px;height:60px;background:#f00;";
+
+        function game1() {
+            //for(var i=0;i<1000;i++){
+            var i = 0;
+            var num = Math.ceil(Math.random()*1000);
+            //Math.floor 소수점 버리기
+            //Math.random 숫자 랜덤으로 소수점까지 나오기
+            //Math.ceil 소수점 올리기
+            //Math.round 반올림
+            
+            console.log(num);
+            var loop = setInterval(function() {
+                i += 10;
+                if(i >= num){
+                    clearInterval(loop);
+                }
+                s3.style = "margin-left:" + i + "px";
+            }, 5);
+            //   setInterval 내장함수, loop안에 내장함수를 담아주면 멈출 수 있다
+            //}
+        }
+        btn.addEventListener('click', function() {
+            game1();
+        });
+    </script>
+
+</body></html>

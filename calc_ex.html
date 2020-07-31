@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+
+    <article class="ex_1">
+        <h2>산술연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+     <article class="ex_2">
+        <h2>할당연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+     <article class="ex_3">
+        <h2>비교연산자</h2>
+        <div>
+            console에 출력한 내용을 이곳에 넣으시오.
+        </div>
+    </article>
+
+  
+
+
+    <script>
+    var ex_1 =document.querySelector('.ex_1 div');
+        ex_1.textContent = 20 + 20;
+        ex_1.textContent *= 40;
+        ex_1.textContent /= 2;
+        
+        var ex_2 =document.querySelector('.ex_2 div');
+        
+       
+        ex_2.innerHTML = ex_1 +200+'$';
+        
+        var ex_3 =document.querySelector('.ex_3 div');
+        if(20 != 10){
+            ex_3.textContent = '통과';
+        }else{
+            ex_3.textContent = '실패';
+        }
+    
+    
+    
+    </script>
+</body></html>

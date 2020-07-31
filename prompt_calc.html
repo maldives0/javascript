@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+   
+  </head>
+  <body>
+   <div class="promt_result"></div>
+   
+   
+   <script>
+      var p_result = document.querySelector('.promt_result');
+       var p_data1 = prompt('html점수는?');
+       
+       var p_data2 = prompt('css점수는?');
+       var p_data3 = prompt('javascript점수는?');
+       
+       p_data1 = Number(p_data1);
+        p_data2 = Number(p_data2);
+        p_data3 = Number(p_data3);
+       
+       console.log(p_data1);
+       console.log(typeof p_data1);
+       
+       var sum = p_data1 + p_data2 + p_data3 ;
+       
+      var avg = p_data1 + p_data2 + p_data3/3;
+//       
+//       var degree = if(avg〉=90)=A, if(90〉= avg 〉=80)=B,  if(80〉= avg 〉=70)=C;
+//       
+       p_result.textContent = '총점 ' + sum +'점 / 평균 '+ avg +'점';
+      </script>
+  </body>
+</html>

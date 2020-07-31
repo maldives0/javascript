@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+   
+  </head>
+  <body>
+   <div class="result"></div>
+    
+   
+   <script>
+      var result = document.querySelector('.result');
+       var id =prompt('아이디를 입력해 주세요');
+        var pw =prompt('비밀번호를 입력해 주세요');
+       
+       
+       if(id == 'chase' && pw == 'momo'){
+         //true일 때
+         result.textContent = '환영합니다.';
+       }else{
+//false일 때
+     result.textContent = '다시 시도하세요.';  }
+   
+       //console.log(result);
+      </script>
+  </body>
+</html>

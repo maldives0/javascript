@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+
+  
+
+    <div class="game" style="border:1px solid #000; padding:60px;">
+        <input type="text" name="data">
+        <button>start</button>
+        <p>승리, 패배, 비김</p>
+    </div>
+
+
+
+    <script>
+        
+       
+        var com = Math.floor(Math.random() * 3);
+var comData;
+        switch(com){
+            case 0:
+                comData = '주먹'; break;
+                //break는 값을 계속 변화시켜라
+            case 1:
+                comData = '가위'; break;
+           
+            default:comData = '보';
+        }
+        
+        console.log(comData);
+        //            if (com == 0) {
+        //                comData = '주먹';
+        //            } else if (com == 1) {
+        //                comData = '가위';
+        //            } else {
+        //                comData = '보';
+        //            }
+    
+     var arr = ['수박', '참외','복숭아','사과','딸기','키위'];
+     
+        var len = arr.length;
+//        len은 arr의 갯수가 변할 때마다 다른 값을 가진다
+        console.log(len);
+      var arrIdx = Math.floor(Math.random() * len);
+        console.log(arr[arrIdx]);
+//        대괄호 안에 숫자가 arr의 인덱스 숫자 값(수박=0, 참외=1)이다
+    </script>
+</body></html>

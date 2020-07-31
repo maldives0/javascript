@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+
+
+    <div class="result">
+        good evening!
+        good afternoon!
+        good morning!
+    </div>
+
+    <div class="game" style="border:1px solid #000; padding:60px;">
+        <input type="text" name="data">
+        <button>start</button>
+        <p>승리, 패배, 비김</p>
+    </div>
+
+
+
+    <script>
+        var today = new Date();
+        var hourNow = today.getHours();
+        var selector = document.querySelector('.result');
+        var result;
+        if (hourNow > 18) {
+            //조건1이 true일때
+            result = 'good evening!';
+        } else if (hourNow > 12) {
+            result = 'good afternoon!';
+        } else {
+            result = 'good morning!';
+        }
+        console.log(hourNow);
+        //      0은 false, 나머지 숫자는 true
+
+        //클래스가 result인 div에 화면이 출력된다
+        selector.textContent = result;
+
+
+        var comData = '주먹',
+                data = document.querySelector('input'),
+                msg = document.querySelector('p'),
+                startBtn = document.querySelector('button');
+        //input, p, button, div(game) 
+        //console창에 Math.random()무작위로 숫자값 넣기, Math.floor소수점 버리기
+
+        startBtn.addEventListener('click', function() {
+            var com = Math.floor(Math.random() * 3);
+            if (com == 0) {
+                comData = '주먹';
+            } else if (com == 1) {
+                comData = '가위';
+            } else {
+                comData = '보';
+            }
+
+            var user = data.value;
+            //input tag 안 내용 -> data.value;
+            console.log(user);
+            
+            
+            if(comData == user){
+                msg.textContent = '비김';
+            }else if(comData == '주먹' && user == '보'){
+                 msg.textContent = '승리';
+            }else if(comData == '가위' && user == '주먹'){
+                 msg.textContent = '승리';
+            }else if(comData == '보' && user == '가위'){
+                 msg.textContent = '승리';
+            }else{
+                 msg.textContent = '패배';
+            }
+          
+        });
+    </script>
+</body></html>

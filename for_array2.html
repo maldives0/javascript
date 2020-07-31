@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JavaScript &amp; jQuery</title>
+
+</head>
+
+<body>
+    <style>
+        span {
+            display: inline-block;
+            border: 1px solid #999;
+            margin: 10px;
+        }
+
+        table td {
+            border: 1px solid #0f0;
+        }
+
+    </style>
+
+
+
+
+    <article class="ex1">
+        <h2>2단</h2>
+        <div>
+            2단 구구단 값 출력하기
+        </div>
+        <table>
+            <tr>
+                <td>2단</td>
+                <td>3단</td>
+                <td>4단</td>
+                <td>5단</td>
+                <td>6단</td>
+                <td>7단</td>
+                <td>8단</td>
+                <td>9단</td>
+
+
+            </tr>
+        </table>
+    </article>
+    <script>
+        var result = document.querySelector('.ex1 div');
+        var guguNum = 2;
+        var span = '';
+        for (var i = 1; i < 10; i++) {
+
+            result.innerHTML += '<br>' + guguNum + 'x' + i + '=' + (guguNum * i);
+        }
+
+
+        for (var i = 2; i < 10; i++) {
+            //구구단 첫 숫자
+            span += "<span>";
+            for (var j = 1; j < 10; j++) {
+                //구구단 두번째 숫자
+                //i가 1번 실행할 때 j는 9번 실행한다
+                //i가 2번 실행할 때 j는 18번 실행한다
+                span += '<br>' + i + 'x' + j + '=' + (i * j);
+                //span = <span>
+                //2x1=2
+            }
+            span += "</span>";
+            //          //span = <span>
+            //          2x1=2
+            //          .
+            //          .
+            //          .
+            //          2x9=18
+            //          </span>
+            if (i == 5) {
+                span += '<p></p>'
+            }
+        }
+        result.innerHTML = span;
+
+        var gugudan = '',z=0;
+
+        for (var k = 2; k < 10; k++) {
+           
+            if(z%3 == 0){
+                gugudan += '<tr>';
+            }
+            z++;
+            gugudan += "<td>";
+            for (var h = 1; h < 10; h++) {
+                gugudan += '<br>' + k + 'x' + h + '=' + (k * h);
+            }
+            gugudan += "</td>";
+            if (z%3 == 0) {
+                gugudan += "</tr>";
+            }
+        }
+
+
+        var table = document.querySelector('table');
+        table.innerHTML += gugudan;
+
+    </script>
+    
+    <style>
+        .ex2 li{
+            width:20%; height:100px;
+            border:1px solid #fff;
+            margin:10px;
+    
+        }
+        .ex2 li img{
+            width:100%;
+            
+        }
+    </style>
+<article class="ex2">
+    <h2>list</h2>
+    <ul>
+<!--
+        <li><img src="../img/p03-19-01.jpg" alt=""></li>
+        <li><img src="../img/p02-05-05.jpg" alt=""></li>
+        <li><img src="../img/p03-02-04.jpg" alt=""></li>
+-->
+    </ul>
+</article>
+<script>
+    var ul=document.querySelector('ul');
+    var liNode='';
+    var imgArr = ['../img/p03-19-01.jpg','../img/p02-05-05.jpg','../img/p03-02-04.jpg','../img/p03-19-01.jpg','../img/p02-05-05.jpg','../img/p03-02-04.jpg'];
+    // " <li><img src="+imgArr[i]+"></li>"
+   //                    ㄴ imgArr[0]=../img/p03-19-01.jpg
+   for(var i=0;i<imgArr.length;i++){
+       liNode += " <li><img src="+imgArr[i]+"></li>";
+   }
+    ul.innerHTML = liNode;
+   ul.style="display:flex";
+    ul.style.display = "flex";
+   
+    </script>
+</body>
+
+</html>
