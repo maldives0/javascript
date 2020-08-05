@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_01.js"></script>
+</head>
+
+<body>
+    <article class="dom_1">
+        <h2>dom 01</h2>
+        <div>
+            <input type="text" list="src-list" id="ipSrc">
+            <datalist id="src-list">
+                <option>../img/cam_01.jpg</option>
+                <option>../img/cam_02.jpg</option>
+                <option>../img/cam_03.jpg</option>
+            </datalist>
+            <input type="color" id="color">
+            <button id="btn">변경</button>
+            <p><img id="imgSrc" src="../img/cam_01.jpg"></p>
+        </div>
+    </article>
+    <article class="dom_2">
+        <h2>dom 02</h2>
+        <div>
+            <input type="text" list="src-list2" id="ipSrc2">
+            <datalist id="src-list2">
+                <option>../img/cam_01.jpg</option>
+                <option>../img/cam_02.jpg</option>
+                <option>../img/cam_03.jpg</option>
+            </datalist>
+            <button id="btn2">추가</button>
+            <p id="addImg"></p>
+        </div>
+    </article>
+    <article class="dom_3">
+        <style>
+            .dom_3 div{
+                display:flex;
+                justify-content:space-between;
+
+            }
+            .dom_3 figure{
+                margin:0; width:30%;
+            }
+            .popup{
+                position:fixed;
+                left:0; top:0;
+                width:100%; height:100%;
+                background:rgba(0,0,0,0.6);
+                display:flex;
+                justify-content: center;
+                align-items:center;
+                display:none;
+            }
+            .popup div{
+                background:#fff;
+                padding:60px;
+            }
+        </style>
+        <h2>dom 03 - 이미지 갤러리</h2>
+        <div>
+           <figure>
+               <img src="../img/cam_01.jpg" alt="">
+               <figcaption  >이미지제목01</figcaption>
+           </figure>
+           <figure>
+               <img src="../img/cam_02.jpg" alt="">
+               <figcaption  >이미지제목02</figcaption>
+           </figure>
+           <figure>
+               <img src="../img/cam_03.jpg" alt="">
+               <figcaption  >이미지제목03</figcaption>
+           </figure>
+        </div>
+    </article>
+    <div class="popup">
+        <div>
+            <img src="../img/cam_03.jpg" alt="">
+            <p>이미지제목01</p>
+        </div>
+    </div>
+    <!-- 1. 썸네일 이미지를 클릭하면
+   - 클릭한 썸네일 src값 추출
+   - 클릭한 썸네일 figcaption 텍스트 추출
+   
+   - 팝업창 display:flex;
+   - 팝업창 안에 이미지와 텍스트 내용을 추출한 값으로 변경하시오.
+
+2.팝업창을 클릭하면 display:none; -->
+
+</body>
+
+</html>
