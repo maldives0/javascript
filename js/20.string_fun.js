@@ -3,7 +3,7 @@ function init() {
     var str = document.querySelector('.str_fun img');
     
     var imgStr = str.src;
-//    ㄴimg/cam01.jpg
+//    ㄴimg/cam_10001.jpg
   
    
 var strStart = imgStr.lastIndexOf('_')+1; //'_'문자열 인덱스값 찾기//33번째
