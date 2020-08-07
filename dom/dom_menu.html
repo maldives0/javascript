@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_menu.js"></script>
+</head>
+
+<body>
+   
+    <style>
+        .trigger-menu {
+            width: 30px;
+            height: 20px;
+            position: relative;
+        }
+        .trigger-menu.active{
+            transform:rotate(90deg);
+        }
+       
+        .trigger-menu span {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: #000;
+        }
+
+        .trigger-menu span:last-child {
+            bottom: 0;
+        }
+        .menu p{
+            display:none;
+        }
+        .menu p.active{
+            display:block;
+        }
+    </style>
+    <article class="menu">
+        <h2>trigger menu</h2>
+        <nav>
+            <a class="trigger-menu">
+                <span></span>
+                <span></span>
+              
+            </a>
+        </nav>
+        <div>
+            <p>
+                <a>content 01</a>
+                <a>content 02</a>
+                <a>content 03</a>
+            </p>
+        </div>
+    </article>
+
+
+</body>
+
+</html>
