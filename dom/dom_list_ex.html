@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_list_ex.js"></script>
+</head>
+
+<body>
+    <style>
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        article div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        article div figure {
+            margin: 0;
+            width: 30%;
+           
+        }
+
+        article div figure img {
+            width: 100%;
+           
+           
+        }
+        .popup{
+            width:100%; height:100vh;
+            background:rgba(0,0,0,0.4);
+            display:flex;
+            justify-content: center;
+            align-items:center;
+            position:fixed;
+            left:0; top:0;
+           
+            display:none;
+            }
+            .popup.active{
+                display:flex;
+            }
+            .popup div{
+                position:fixed;
+                width:100%;
+                height:0px;
+                top:50%;left:0;
+              
+                            }
+                            .popup div button:first-child{
+                                float:left;
+
+                            }
+                            .popup div button:last-child{
+                                float:right;
+                                
+                            }
+    </style>
+    <article class="list">
+        <h2>list</h2>
+        <div>
+            <!-- <figure>
+                <img src="../img/p02-04-09.jpg" alt="">
+                <figcaption>
+                    이미지 제목</figcaption>
+            </figure>
+            <img src="../img/p02-04-09.jpg" alt="">
+            <figcaption>
+                이미지 제목</figcaption>
+            </figure>
+            <img src="../img/p02-04-09.jpg" alt="">
+            <figcaption>
+                이미지 제목</figcaption>
+            </figure> -->
+        </div>
+    </article>
+<div class="popup">
+    <figure>
+        <img src="">
+        <figcaption>상세내용</figcaption>
+    </figure>
+    <div>
+        <button>prev</button>
+        <button>next</button>
+    </div>
+</div>
+
+
+</body>
+
+</html>

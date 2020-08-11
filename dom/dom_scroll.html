@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_scroll.js"></script>
+</head>
+
+<body>
+    <style>
+        body,html,h2{
+            margin:0;
+        }
+        .scr {
+            height: 3000px;
+            
+        }
+
+        aside {
+            position: fixed;
+            right: 10%;
+           top: 90%;
+            background: rgb(15, 122, 113);
+            color: #fff;
+            display:none;
+
+        }
+        aside.active{
+            display:block;
+        }
+        html{
+            scroll-behavior:smooth;
+        }
+    </style>
+    <article class="scr">
+        <h2>scroll_01</h2>
+    </article>
+    <aside>top</aside>
+
+
+</body>
+
+</html>

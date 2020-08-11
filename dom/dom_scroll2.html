@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_scroll2.js"></script>
+</head>
+
+<body>
+    <style>
+        body,html,h2{
+            margin:0;
+        }
+        header{
+            position:sticky;
+            top:0;
+            
+                    }
+                    header .active{
+                        color:#f00;
+                    }
+        section {
+            height: 100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+        section:nth-of-type(odd){
+            background:#eee;
+        }
+
+
+        aside {
+            position: fixed;
+            right: 10%;
+           top: 90%;
+            background: rgb(15, 122, 113);
+            color: #fff;
+           
+
+        }
+        aside.active{
+            display:block;
+        }
+        html{
+            scroll-behavior:smooth;
+        }
+    </style>
+    <header>
+        <nav>
+            <a href="#" class="active">nav01</a>
+            <a href="#">nav02</a>
+            <a href="#">nav03</a>
+            <a href="#">nav04</a>
+        </nav>
+    </header>
+    <section >
+        <h2>section01</h2>
+    </section>
+    <section >
+        <h2>section02</h2>
+    </section>
+    <section >
+        <h2>section03</h2>
+    </section>
+    <section >
+        <h2>section04</h2>
+    </section>
+    <aside>
+        <a>up</a> 
+        <a>down</a>
+          </aside>
+
+
+</body>
+
+</html>
