@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <style>
+        .test {
+            height: 2000px;
+        }
+
+        .test div {
+            width: 100px;
+            height: 100px;
+            background: rgb(4, 4, 48);
+            color: #fff;
+            text-align: center;
+            line-height: 100px;
+            margin-top: 100px;
+
+        }
+
+        .test div.active {
+            transform: scale(1.2) translateX(100%);
+            background: #f00;
+            font-size: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            line-height: 2;
+        }
+    </style>
+    <div class="test">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+    </div>
+    <script>
+
+        var test = document.querySelector('.test');
+        var divArr = [];
+        setTimeout(function () {
+            var divEle = document.querySelectorAll('.test div');
+            divEle.forEach(function (a,idx) {
+                a.addEventListener('click', fun);
+                divArr.push(idx+1);
+                
+            });
+          
+         
+           
+        }, 10)
+        function fun() {
+           
+            if (this.className == 'active') {
+           
+           this.classList.remove('active');
+           
+           this.innerHTML = "0"+divArr[i];
+       }else{
+               this.classList.add('active');
+       
+            }
+            var oW = this.offsetWidth;
+            var oH = this.offsetHeight;
+            var oT = this.offsetTop;
+           
+            if (this.className == 'active') {
+
+                this.innerHTML = "가로:" + oW;
+                this.innerHTML += "<br>세로:" + oH;
+                this.innerHTML += "<br>상단:" + oT;
+           }
+       };
+           
+           
+          
+            
+
+       
+        
+
+        var dH = document.documentElement.offsetHeight;
+        var bH = window.innerHeight;
+
+
+        test.innerHTML += "<p>document의 전체 높이:" + dH + "</p>";
+        test.innerHTML += "<p>Browser의 높이:" + bH + "</p>";
+       
+        // if(divEle[2].offsetTop<=window.scrollY){
+        //     window.scrollTo(0,0);
+        // }
+
+
+    </script>
+</body>
+
+</html>

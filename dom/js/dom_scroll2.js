@@ -27,6 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
      window.addEventListener('scroll',function(){
         secArr.forEach(function(el,idx){
+            console.log(idx);
         if(window.scrollY >= secArr[idx]-winH){
             //console.log(idx);
             navEl.forEach(function(a){

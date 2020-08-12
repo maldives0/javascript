@@ -29,6 +29,8 @@ window.addEventListener('DOMContentLoaded', function () {
             var prev = popEle.querySelectorAll('button')[0];
             var next = popEle.querySelectorAll('button')[1];
             popEle.classList.add('active');
+
+            
             prev.addEventListener('click',function(){ 
                 if(idx !=0) idx--;
                 change(idx);
