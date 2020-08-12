@@ -36,49 +36,65 @@
         }
     </style>
     <div class="test">
-        <div>01</div>
-        <div>02</div>
-        <div>03</div>
+        <div data-num="1">01</div>
+        <div data-num="2">02</div>
+        <div data-num="3">03</div>
     </div>
     <script>
 
         var test = document.querySelector('.test');
         var divArr = [];
+       
+       
         setTimeout(function () {
             var divEle = document.querySelectorAll('.test div');
-            divEle.forEach(function (a,idx) {
+            divEle.forEach(function(a,idx) {
                 a.addEventListener('click', fun);
                 divArr.push(idx+1);
+               
+               
+               
                 
+                    
             });
-          
-         
-           
+        
         }, 10)
-        function fun() {
-           
-            if (this.className == 'active') {
-           
-           this.classList.remove('active');
-           
-           this.innerHTML = "0"+divArr[i];
-       }else{
-               this.classList.add('active');
        
-            }
-            var oW = this.offsetWidth;
-            var oH = this.offsetHeight;
-            var oT = this.offsetTop;
+          
+        function fun() {
+            
            
-            if (this.className == 'active') {
-
-                this.innerHTML = "가로:" + oW;
-                this.innerHTML += "<br>세로:" + oH;
-                this.innerHTML += "<br>상단:" + oT;
+          var i = this.dataset.num;
+          
+           if (this.className == 'active') {
+         
+          this.classList.remove('active');
+         
+            
+          this.innerHTML = "0"+ i;
+       
+          
+             
+             
+         
+          
+      }else{
+              this.classList.add('active');
+      
            }
-       };
-           
-           
+           var oW = this.offsetWidth;
+           var oH = this.offsetHeight;
+           var oT = this.offsetTop;
+          
+           if (this.className == 'active') {
+
+               this.innerHTML = "가로:" + oW+"<br>세로:" + oH+"<br>상단:" + oT;
+              
+               
+          }
+
+        
+      };
           
             
 
