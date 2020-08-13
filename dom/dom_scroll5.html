@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/dom_scroll5.js"></script>
+</head>
+
+<body>
+    <style>
+        html{
+            scroll-behavior:smooth;
+        }
+       
+        body,html,h2{
+            margin:0;
+            overflow:hidden;
+            /* 스크롤 가리기 */
+        }
+      .con{
+          position:absolute;
+          top:0; left:0;
+          width:100%;
+        transition:1s;
+      }
+      .con div{
+          height:100vh;
+          
+
+      }
+      .con div:nth-of-type(2n){
+          background:#eee;
+      }
+    </style>
+   <article class="con-list">
+      <!-- <h2>scroll appear</h2> -->
+       <div class="con">
+           <div>con01</div>
+           <div>con02</div>
+           <div>con03</div>
+           <div>con04</div>
+           <div>con05</div>
+       </div>
+   </article>
+</body>
+
+</html>

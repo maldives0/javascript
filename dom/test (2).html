@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .test {
+            height: 2000px;
+        }
+
+        .test div {
+            width: 100px;
+            height: 100px;
+            background:#00f;
+            color:#fff;
+            text-align:center;
+            line-height:20px;
+            margin-top:100px;
+            transition:.5s;
+        }
+        .test div.active{
+            transform:scale(1.2) translateX(100%);
+            background:#f00;
+        }
+    </style>
+    <div class="test">
+        <div>01</div>
+        <div>02</div>
+        <div>03</div>
+    </div>
+
+
+<script>
+    
+    var divEle = document.querySelectorAll('.test div');
+    var divArr = [];
+//    divArr[0] = divEle[0].innerHTML;
+    divArr.push(divEle[0].innerHTML);
+    divArr.push(divEle[1].innerHTML);
+    divArr.push(divEle[2].innerHTML);
+    
+    divEle[0].addEventListener('click',fun);
+    divEle[1].addEventListener('click',fun);
+    divEle[2].addEventListener('click',fun);
+    
+    function fun(){
+        divEle[0].classList.remove('active');
+        divEle[1].classList.remove('active');
+        divEle[2].classList.remove('active');
+        
+        this.classList.add('active');
+        
+        var wid = this.offsetWidth;
+        var hei = this.offsetHeight;
+        var top = this.offsetTop;        
+        
+        divEle[0].innerHTML = divArr[0];
+        divEle[1].innerHTML = divArr[1];
+        divEle[2].innerHTML = divArr[2];
+        
+        this.innerHTML = `가로:${wid}, 세로:${hei}, 위치:${top}`;
+    }
+    
+    var domHei = document.documentElement.offsetHeight;
+    
+    var winHei = window.innerHeight;
+    
+    window.addEventListener('scroll',function(){
+        if(domHei - winHei <= this.scrollY){
+            this.scrollTo(0,0);
+        }
+    })
+    
+    
+    
+   /* 
+1. 선택자 .test div에 클릭 이벤트 발생
+     a) 클릭한 div에 active 추가
+        active가 추가된 div는 
+            scale(1.2) 
+            translateX(100%)
+            background:#f00
+                   
+     b) 조건문(클래스 active가 있다면)
+        클릭한 div 내용(01)을 아래의 문자열로 갱신
+        
+        가로:100 (offsetWidth 이용)
+        세로:100 (offsetHeight 이용)
+        상단:위치값(offsetTop이용)
+    
+2. 가로( )값을 구하고 화면에 출력하시오.
+    - document의 전체 높이 : (2000) 
+    - 브라우저 높이 : (969)
+
+3. 스크롤 이벤트발생
+   #조건문 (스크롤이 최하단에 도달하면)
+   scrollTO(0,0)으로 처리
+   
+   
+4. 차이점 분석
+
+var first = 0, last = 0;
+    
+window.addEventListener('scroll',function(){
+    first = this.scrollY;
+    
+    console.log( first > last );
+    
+    last = first;
+});
+   
+  */ 
+   
+   
+   
+    
+    
+    
+    
+    
+
+
+</script>
+
+
+
+
+
+
+</body></html>
