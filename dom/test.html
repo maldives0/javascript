@@ -45,7 +45,7 @@
         var divEle = document.querySelectorAll('.test div');
         var test = document.querySelector('.test');
         var divArr = [];
-     
+   
 
         setTimeout(function () {
 
@@ -53,48 +53,51 @@
                 a.addEventListener('click', fun);
                 // a는 3번 실행한다
                 divArr.push(a.innerHTML);
-                console.log(divArr);
+
             });
+
+           
 
         }, 10)
 
         function fun() {
-
-            divEle.forEach(function (a) {
-                a.classList.remove('active');
-
-                console.log(a);
-            });
-
-            this.classList.add('active');
-
             var oW = this.offsetWidth;
             var oH = this.offsetHeight;
             var oT = this.offsetTop;
+            if (this.className == 'active') {
 
-            
-            divEle.forEach(function (b, i) {
-                b.innerHTML = divArr[i];
+                this.classList.remove('active');
+                divEle.forEach(function (b, i) {
+                    b.innerHTML = divArr[i];
 
-            });
-
-            this.innerHTML = "가로:" + oW + "<br>세로:" + oH + "<br>상단:" + oT;
+                });
 
 
-        };
+            } else {
+                this.classList.add('active');
+                this.innerHTML = "가로:" + oW + "<br>세로:" + oH + "<br>상단:" + oT;
 
+            }
+
+
+        }
+        
 
         var dH = document.documentElement.offsetHeight;
+        
         var bH = window.innerHeight;
- //innerHTML은 +=로 값을 더할 때 앞의 div 3개를 새로 reset시키며 앞의 명령을 무효로 만들어버린다
+        //innerHTML은 +=로 값을 더할 때 앞의 div 3개를 새로 reset시키며 앞의 명령을 무효로 만들어버린다
         // test.innerHTML += "<p>document의 전체 높이:" + dH + "</p>";
         // test.innerHTML += "<p>Browser의 높이:" + bH + "</p>";
         var a = document.createElement('p');
-        var b = document.createTextNode("document의 전체 높이:" + dH );
-        a.appendChild(b);
-        test.appendChild(a);
+        var b = document.createTextNode("document의 전체 높이:" + dH);
 
-        console.log(divEle[2].offsetTop);
+        console.log(dH);
+        // a.appendChild(b);
+        // test.appendChild(a);
+       
+  
+
         window.addEventListener('scroll', function () {
             if (dH - bH <= this.scrollY) {
                 window.scrollTo(0, 0);
