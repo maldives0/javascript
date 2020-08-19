@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/basic.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <script>
+
+        $(function () {
+            //function: document가 모두 읽힌 뒤에 실행하도록 함
+
+            //  $('button').eq(0).on('click',function(){
+            //     $('figure').show();
+            // });
+
+            //  $('button').eq(1).on('click',function(){
+            //     $('figure').hide();
+
+            // });
+
+            $('button').on('click', funSH);
+
+
+            function funSH() {
+                if ($(this).index() == 0) {
+
+                    $('figure').show();
+                } else {
+                    $('figure').hide();
+                }
+
+
+            };
+
+
+
+        });
+
+    </script>
+    <style>
+        * {
+            text-align: center;
+        }
+    </style>
+    <div class="s_h">
+        <p>
+            <button>show</button>
+            <button>hide</button>
+        </p>
+        <figure>
+            <img src="../img/p02-01-15.jpg">
+        </figure>
+    </div>
+
+
+
+</body>
+
+</html>

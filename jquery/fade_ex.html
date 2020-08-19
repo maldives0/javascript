@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+    <script src="js/basic.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <script>
+
+        $(function () {
+
+            $('figure').not(':first').hide();
+
+            var idx = 0;
+            var loop;
+            $('button').on('click',cFun);
+           
+           
+            function cFun(){
+               
+                if($(this).index() == 0){
+                   idx--;
+                   console.log(idx);
+                   if(idx>0){
+                    $('figure').eq(idx).fadeOut(400,
+                    function a(){
+                        $(this).prev().fadeIn();
+                    }
+                
+                    );
+                }
+                  
+                }else{
+                    idx++;
+                   var len= $(figure).length;
+                    if(idx<=len){
+                        console.log(len);
+                    $('figure').eq(idx).fadeOut(400,
+                    function a(){
+                        $(this).next().fadeIn();
+                    }
+                }
+                    );
+                 
+                }
+               
+               
+            };
+            function fade() {
+
+              $('figure').eq(idx).fadeOut(1000);
+              
+                idx++;
+                update();
+                $('figure').eq(idx).fadeIn(1000);
+
+            }
+           
+            function update() {
+                var len = $('figure').length;
+                if (idx >= len) idx = 0;
+
+            };
+
+           
+
+            function clearFun() {
+                clearInterval(loop);
+            };
+            function interFun() {
+                loop = setInterval(fade, 2000);
+            };
+            interFun();
+
+            $('.fade div, button').on(
+            {mouseenter: clearFun,
+            mouseleave:interFun}    
+            );
+
+          
+        });
+
+    </script>
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .fade div {
+            position: relative;
+            width: 300px;
+            margin: 0 auto;
+
+        }
+
+        figure {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        img {
+            width: 300px;
+        }
+    </style>
+    <div class="fade">
+        <p>
+            <button>prev</button>
+            <button>next</button>
+        </p>
+        <div>
+            <figure>
+                <img src="../img/p02-01-15.jpg">
+            </figure>
+            <figure>
+                <img src="../img/p02-01-14.jpg">
+            </figure>
+            <figure>
+                <img src="../img/p02-01-13.jpg">
+            </figure>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>
