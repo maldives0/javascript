@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <script>
+        $(function () {
+            // preppend,append
+            var slide = $('.b_a div');
+            var first = $('figure:first').clone();
+            // slide.preppend('momo');
+             slide.append(first);
+            $('figure').each(function (i) {
+                $(this).css(
+                    {
+                        'left': 100 * i + '%'
+                    });
+            });
+
+            $('button').on('click', function () {
+
+                var idx = $(this).index();
+
+                if (idx == 0) {
+
+                } else {
+                    aniFun();
+                }
+            });
+
+            function aniFun() {
+                $('.b_a div').animate({
+                    left: '-100%'
+                },800);
+            }
+
+        });
+    </script>
+
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .b_a {
+            border: 2px solid #000;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            text-align: left;
+            height: 100%;
+        }
+
+        figure {
+            position: absolute;
+            display: inline-block;
+            margin: 0;
+            height: 100%;
+        }
+
+        img {
+            width: 300px;
+            height: 100%;
+        }
+    </style>
+
+    <div class="b_a">
+
+        <div>
+            <figure><img src="../img/p02-01-06.jpg">1</figure>
+            <figure><img src="../img/p02-01-15.jpg">2</figure>
+            <figure><img src="../img/p02-02-08.jpg">3</figure>
+        </div>
+
+    </div>
+
+    <p>
+        <button>prev</button>
+        <button>next</button>
+    </p>
+
+
+
+
+</body>
+
+</html>
