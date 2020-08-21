@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <script>
+        $(function () {
+            // prepend,append
+            var slide = $('.b_a div');
+            var len = $('.b_a figure').length;
+            var num = 0;
+            var first = $('figure:first').clone();
+            var last = $('figure:last').clone();
+            slide.prepend(last);
+            slide.append(first);
+            $('figure').each(function (i) {
+
+                if(i==0){
+                    pos=  '-100%';
+                }else{
+                    pos =  100 * (i-1) + '%';
+                }
+                $(this).css({
+                        left: pos 
+                    });
+            });
+
+
+
+            function aniFun() {
+                $('.b_a div').animate({
+                    left: -100 * num + '%'
+                }, 800, callback);
+                function callback() {
+                    console.log(num)
+                    if (num == len) {
+                        num = 0;
+                        $('.b_a div').animate({
+                            left: -100 * num + '%'
+                        }, 0);
+                    }
+                    if (num == -1) {
+                        num = len-1;
+                        $('.b_a div').animate({
+                            left: -100 * num + '%'
+                        }, 0);
+                    }
+                    
+                }
+            }
+            $('button').on('click', function () {
+
+                var idx = $(this).index();
+
+                if (idx == 0) {
+                    //prev
+                    num--;
+                    aniFun();
+                } else {
+                    //next
+                    num++;
+                    aniFun();
+                }
+            });
+
+        });
+    </script>
+
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .b_a {
+            border: 2px solid #000;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+        }
+
+        div {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+            /* overflow:hidden; */
+        }
+
+        figure {
+            position: absolute;
+           
+            margin: 0;
+            height: 100%;
+        }
+
+        img {
+            width: 300px;
+            height: 100%;
+        }
+    </style>
+
+     <div class="b_a">
+        <div>
+            <figure>
+                <img src="../img/p02-01-07.jpg">
+                <p>1</p>
+            </figure>
+            <figure>
+                <img src="../img/p02-01-08.jpg">
+                <p>2</p>
+            </figure>
+            <figure>
+                <img src="../img/p02-01-10.jpg">
+                <p>3</p>
+            </figure>
+        </div>
+    </div>
+
+    <p>
+        <button>prev</button>
+        <button>next</button>
+    </p>
+
+
+
+
+</body>
+
+</html>

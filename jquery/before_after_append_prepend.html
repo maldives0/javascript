@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+<style>
+*{
+    background:#000;
+    color:#fff;
+}
+
+</style>
+<body>
+
+    <script>
+        $(function () {
+            //추가
+            $('.ex p').before('<span>before</span>');
+            $('.ex p').after('<span>after</span>');
+            $('.ex p').append('<span>append</span>');
+            $('.ex p').prepend('<span>prepend</span>');
+            //이동
+           
+            $('.ex2 p:first').before($('.ex2 p:last'));
+
+            var s = $('.ex2 p:first span:last');
+          
+            $('.ex2 p:first').prepend(s);
+        });
+    </script>
+
+
+    <!-- span추가 -->
+    <div class="ex">
+        <!-- before -->
+        <p>
+            <!-- 자식요소 앞 prepend -->
+            <strong>자식요소</strong>
+            <!--자식요소 뒤 append -->
+        </p>
+        <!-- after -->
+    </div>
+
+    <!-- 이동 -->
+    <hr>
+    <div class="ex2">
+        <p>p01
+            <span>p01-s01</span>
+            <span>p01-s02</span>
+        </p>
+        <p>p02
+            <span>p02-s01</span>
+            <span>p02-s02</span>
+        </p>
+
+
+    </div>
+    <!-- vanilla -->
+    <script>
+        $(function () {
+            // before()
+            // append()
+            var el = document.querySelector('.ex3 p');
+            
+            var elTxt = '<span>gogogo</span>';
+            el.insertAdjacentHTML('beforebegin', elTxt);
+            el.insertAdjacentHTML('beforeend', elTxt);
+            el.insertAdjacentHTML('afterbegin', elTxt);
+            el.insertAdjacentHTML('afterend', elTxt);
+        });
+
+    </script>
+    <hr>
+    <div class="ex3">
+        <!-- 기준점의 앞에서 시작한다 beforebegin -->
+        <p>
+            <!-- afterbegin -->
+            <strong>자식요소</strong>
+            <!--beforeend -->
+        </p>
+        <!-- afterend -->
+    </div>
+    <script>
+        $(function () {
+            // before()
+            // append()
+            var el = document.querySelectorAll('.ex4 p');
+            var el2 = el[0].querySelectorAll('strong');
+           
+           //자리 이동과 노드 추가 가능
+            el[0].before(el[1]);
+           //el[1].after(el[0]);
+           //el[0].append(el2[0]);
+           el[0].prepend(el2[1]);
+
+           //임의로 노드 지정('<p>1</p>')해서 추가 못함, 부모 요소 안에 
+           //el2[0]를 기준으로 그 앞에 값을 넣음
+           //null(부모 요소 맨 앞)을 기준으로 함
+           var a = document.createElement('span');
+           el[0].insertBefore(a,el2[0]);
+           
+           //el[0].appendChild('<p>2</p>',null);
+        });
+
+    </script>
+
+    <hr>
+    <div class="ex4">
+        <!--  before -->
+        <p>
+          
+            <strong >자식요소1</strong>
+            <strong>자식요소1-1</strong>
+             <!-- append -->
+        </p>
+        <p>
+          
+            <strong >자식요소2</strong>
+            
+        </p>
+      
+    </div>
+
+</body>
+
+</html>

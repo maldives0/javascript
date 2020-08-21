@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- drag가능하게 하는 pugin -->
+</head>
+<style>
+    * {
+        background: gray;
+    }
+    ul,li{
+        list-style:none;
+        margin:0;
+        padding:0;
+        
+    }
+    .drag{
+        overflow:hidden;
+        position:relative;
+        
+    }
+    ul{
+        display:flex;
+        justify-content:space-between;
+    }
+    li{
+        width:30%; 
+        height:300px;
+        border:1px solid #000;
+    }
+    
+</style>
+
+<body>
+
+    <script>
+        $(function () {
+           //start
+           $('.drag').append('<p></p>');
+
+            $('.drag ul').draggable(
+                {
+                    axis:'x',
+                    //x값만 조정 가능하게 만듬
+                    revert:true,
+                 //제자리로 돌아옴
+                 start:function(e){
+                     posStart = e.pageX;
+                     console.log(posStart)
+                     
+                 },
+                 //start:start() 와 같음, 객체 안 draggable method 안에 start option을 만듬, start 안에 함수를 만듬, start는 한번밖에 발동 안됨, stop도 마찬가지
+                 drag:function(e){
+                     posDrag = e.pageX;
+                     $('.drag p').text(posDrag);
+                 },
+                 stop:function(){
+                     $('.drag').animate({
+                         left:400
+                     });
+                 }
+                }
+            );
+           //end
+        });
+    </script>
+
+
+
+    <div class="drag">
+       <ul>
+            <li>이미지1</li>
+            <li>이미지2</li>
+            <li>이미지3</li>
+       </ul>
+      
+
+    </div>
+  
+
+
+</body>
+
+</html>

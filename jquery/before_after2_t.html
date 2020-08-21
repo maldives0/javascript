@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <script>
+        $(function() {
+            //start
+            
+//          preppend, append;
+            var slide = $('.b_a div');
+            var num = 0;
+            
+            var first = $('figure:first').clone();
+            slide.append(first);
+            
+            
+            $('figure').each(function(i){
+                $(this).css({
+                    left:100*i+'%'
+                });
+            });
+            
+            function aniFun(){
+                $('.b_a div').animate({
+                    left:-100 * num +'%'
+                },800,callbak);
+                
+                function callbak(){
+                    console.log(num)
+                }
+            }
+
+            
+            $('button').on('click',function(){
+                var idx = $(this).index();
+                
+                if(idx == 0){
+                    //prev
+                }else{
+                    num++;
+                    aniFun();
+                }
+            });
+
+
+
+
+
+            //end
+        });
+
+    </script>
+
+    <style>
+        * {
+            text-align: center;
+        }
+
+        .b_a {
+            border: 10px solid #f00;
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+/*            overflow:hidden;*/
+        }
+
+        div {
+            position: absolute;
+            left:0; top:0;
+            height:100%;
+            width: 100%;
+            text-align:left;
+        }
+
+        figure {
+            position:absolute;
+            height:100%;
+            margin: 0;
+        }
+
+        img {
+            width: 300px;
+            height:100%;
+        }
+
+    </style>
+
+    <div class="b_a">
+        <div>
+            <figure>
+                <img src="../img/img_01.jpg">
+                <p>1</p>
+            </figure>
+            <figure>
+                <img src="../img/img_02.jpg">
+                <p>2</p>
+            </figure>
+            <figure>
+                <img src="../img/img_03.jpg">
+                <p>3</p>
+            </figure>
+        </div>
+    </div>
+    
+    <p>
+        <button>prev</button>
+        <button>next</button>
+    </p>
+
+
+
+
+
+
+
+</body>
+
+</html>
