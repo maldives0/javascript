@@ -15,7 +15,7 @@ window.addEventListener('DOMContentLoaded', function () {
             e.preventDefault();
         //  a tag 에 걸린 링크값으로 넘기지 않도록 한다
         //var a = secEl[idx].offsetTop;
-        // brouser top으로부터 해당 컨텐츠의 위치만큼 떨어진 y좌표값 
+        // browser top으로부터 해당 컨텐츠의 위치만큼 떨어진 y좌표값 
        
 
             window.scrollTo(0,secArr[idx]);

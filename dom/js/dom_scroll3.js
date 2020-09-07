@@ -5,11 +5,13 @@ window.addEventListener('DOMContentLoaded', function () {
  window.addEventListener('scroll',fadeFun);
 var winH = window.innerHeight;
  function fadeFun(){
-    
+    console.log(this)
     liEl.forEach(function(el,idx){
       
      if(  el.offsetTop-winH <= this.scrollY){
-         console.log(   el.offsetTop);
+      
+       
+       
         el.classList.add('active');
      }
     });
