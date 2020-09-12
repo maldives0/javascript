@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="res">
+
+    </div>
+    <script>
+
+         $(function () {
+        //     function res(){
+
+        //     var winW = window.innerWidth;
+        //         if (winW > 480) {
+        //             //pc
+        //             console.log('pc')
+        //         } else {
+        //             //mobile
+        //             console.log('mobile')
+        //         }
+
+        //     //res
+        // }
+        // res();//창을 켜면 바로 한 번 실행한다
+        // $(window).resize(res);
+
+        var mq = window.matchMedia("screen and (max-width:768px)");
+        //(max-width:768px)만 써도 된다
+        //@media all screen and (max-width:768px)
+        //browser의 상황을 계속 반복해서 파악한다, 
+        mq.addListener(res);
+
+        function res(e) {
+            if (e.matches) {
+                console.log('mobile')
+            } else {
+                console.log('pc')
+            }
+        }
+        res(mq);
+
+            //end
+        });
+    </script>
+</body>
+
+</html>

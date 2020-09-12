@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <article>
+        <h1>RegExp(Regular Expression)</h1>
+        <div></div>
+    </article>
+    <script>
+        var strl = "javascript 자바스크립트 +0*/_ HTML5";
+        var rexp1 = /javascript/ig;
+        //'/'문자의 시작과 끝 구분
+        // i:대소문자 구분없이 
+        // g:전체 검색
+        var rexp2 = /[^script]/g;
+        //[]:해당문자 한자씩 검색, 각각 ','로 나누어 출력
+        //^:가로 안의 문자 제외하고 나머지 문자
+        var rexp3 = /[A-Z]/g;
+        // A부터 Z까지 대문자로 된 문자열 찾기
+        var rexp4 = /[0-9]/ig;
+        var rexp5 = /script|html/ig;
+        //script 또는 html 검색
+        var rexp6 = /^j/ig;
+        //j로 시작하는 문자열 찾기, j가 문자열 시작이 아니라 중간에 들어가면 못찾음
+        var rexp7 = /5$/ig;
+        //5로 끝나는 문자
+        var rexp8 = /\w/ig;
+        //대소문자, 숫자, _ 검색(한글제외)
+        var rexp9 = /\W/ig;
+        //대소문자, 숫자, _ 를 제외
+        var rexp10 = /\d/ig;
+        //숫자 찾기,rexp4와 같음
+        var rexp11 = /\D/ig;
+        //숫자 제외
+        var rexp12 = /\s/ig;
+        //공백문자검색
+
+
+      
+
+        $('div').append(strl.match(rexp1)+'<br>');
+        $('div').append(strl.match(rexp2)+'<br>');
+        $('div').append(strl.match(rexp3)+'<br>');
+        $('div').append(strl.match(rexp4)+'<br>');
+        $('div').append(strl.match(rexp5)+'<br>');
+        $('div').append(strl.match(rexp6)+'<br>');
+        $('div').append(strl.match(rexp7)+'<br>');
+        $('div').append(strl.match(rexp8)+'<br>');
+        $('div').append(strl.match(rexp9)+'<br>');
+         $('div').append(strl.match(rexp10)+'<br>');
+         $('div').append(strl.match(rexp11)+'<br>');
+        $('div').append(strl.match(rexp12)+'<br>');
+
+
+        var str2 = "bc ab cabcdef abcc dcea"
+        var rexp14 = /abc*/ig;
+          //반복되는 패턴 찾기, ab 그리고 0개 이상의 c를 포함한 문자열과 매칭
+        var rexp15 = /abc?/ig;
+         //반복 허용 안함, ab 그리고 0개 또는 1개의 c를 포함한 문자열과 매칭
+         var rexp16 = /abc+/ig;
+
+
+        $('div').append(str2.match(rexp14)+'<br>');
+        $('div').append(str2.match(rexp15)+'<br>');
+        $('div').append(str2.match(rexp16)+'<br>');
+    </script>
+</body>
+
+</html>

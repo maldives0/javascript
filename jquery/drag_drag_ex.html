@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <script>
+        $(function () {
+            //start
+
+            $('.drag p ').draggable({
+                containment: '.drag',//drag 된 p를 부모 안에 가두기
+                start: function () {
+
+                },
+                drag: function () {
+                    $('.drag').css('background', '#f00')
+                },
+                stop: function () {
+                    $('.drag').css('background', '#0f0')
+                }
+            });
+            //end
+        });
+    </script>
+
+
+    <div class="drag">
+        <p></p>
+    </div>
+    <!-- vanilla -->
+    <style>
+        .slide {
+            width: 500px;
+            height: 400px;
+            position: relative;
+            border: 2px solid #f00;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .slide ul {
+            display: flex;
+            /* flex로 공중에 띄운다 *flex는 부모 영역을 넘어서는 자식요소들을 줄여서 영역안에 맞춘다*/
+            width: 100%;
+            height: 100%;
+            position: relative;
+
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .slide ul li {
+            flex: 0 0 auto;
+            /* flex-glow 해당 숫자만큼 비율을 늘림,
+          flex-shrink 비율 줄임,
+          width-size */
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide ul li img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <div class="slide">
+        <ul>
+            <li>
+                <img src="../img/p02-03-01.jpg" draggable="true">
+            </li>
+            <li>
+                <img src="../img/p02-03-02.jpg" draggable="true">
+            </li>
+            <li>
+                <img src="../img/p02-03-03.jpg" draggable="true">
+            </li>
+
+        </ul>
+    </div>
+    <script>
+        $(function () {
+            //start
+            var idx = 0;
+            var len = $('.slide ul li').length;//li 개수
+            var pos = { start:0, end:0};
+            $('.slide ul').draggable({
+                axis: 'x',//좌우만 조절하는 속성으로 설정값 지정하기
+                start: dragStart,
+                drag: drag,
+                stop: dragStop
+            });
+            function dragStart(e) {
+               // console.log(e.pageX)
+                
+                pos.start = e.pageX;//drag 시작할 때 x좌표값
+            }
+            function drag(e) {
+                //console.log(e.pageX)
+              
+                pos.end = e.pageX;  //drag 하면서 변하는 x좌표값
+            }
+            function dragStop(e) {
+                if (pos.start > pos.end) {
+                    //next
+                    if(idx != len-1) idx++;//idx가 0과 같지 않을 때 idx는 -1씩 감소한다
+                  
+                   
+                } else {
+                    //prev
+                    if(idx != 0) idx--;//idx가 0과 같지 않을 때 idx는 -1씩 감소한다
+                   
+                   
+                }
+                $(this).animate({
+                        left: -500 * idx
+                          //ul을 움직이려면 첫째 css transform:translate값을 바꿔준다
+                //둘째 animate, javascript안에서 제어할 수 있어 더 빠르다,  그러나animate 안에서는 transform 값을 인지하지 못한다, left, right값을 조정인다
+                    });
+              
+                    
+                }
+              
+          
+            //end
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>

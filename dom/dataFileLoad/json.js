@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', function () {
         gallEle.innerHTML = '';
 
         response.gallery.forEach(function (el, idx) {
-            // console.log(el);
+            console.log(el);
            if (srEle.value.match(el.sj)) {
             //데이테값.match('찾을 값') 찾을 값을 기준으로 데이터값에서 같은 값이 있는지 검색한다                 
             //if (el.sj.match(srEle.value)) {

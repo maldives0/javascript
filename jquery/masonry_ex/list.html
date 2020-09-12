@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>grid</title>
+    <meta charset="UTF-8">
+
+
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
+</head>
+
+<body>
+    <div class="grid">
+        <div class="grid-sizer"></div>
+        <div class="gutter-sizer"></div>
+
+        <div class="g_item">1<img src='../../img/p02-01-03.jpg'></div>
+        <div class="g_item">2<img src='../../img/p02-01-03.jpg'></div>
+        <div class="g_item g-width-2">3<img src='../../img/p02-01-04.jpg'></div>
+        <div class="g_item">4<img src='../../img/p02-01-05.jpg'></div>
+
+        <div class="g_item">5<img src='../../img/p02-01-06.jpg'></div>
+        <div class="g_item g-width-3">6<img src='../../img/p02-01-06.jpg'></div>
+        <div class="g_item">7<img src='../../img/p02-01-07.jpg'></div>
+
+        <div class="g_item">8<img src='../../img/p02-01-08.jpg'></div>
+        <div class="g_item">9<img src='../../img/p02-01-08.jpg'></div>
+        <div class="g_item">10<img src='../../img/p02-01-10.jpg'></div>
+        <div class="g_item">11<img src='../../img/p02-01-11.jpg'></div>
+    </div>
+</body>
+<script>
+    $(function () {
+        var $grid =  $('.grid').masonry({
+            // set itemSelector so .grid-sizer is not used in layout
+            itemSelector: '.g_item',
+            // use element for option
+            columnWidth: '.grid-sizer',//기본 width
+            percentPosition: true,
+            gutter: '.gutter-sizer',//가로 간격 10px(세로는 지원해주지 않음)
+            horizontalOrder: true//1-100 item 순서
+        });
+
+       
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress(function () {
+            $grid.masonry('layout');
+        });
+    });
+
+</script>
+<style>
+    /* ---------------px------------ */
+    /* .grid{
+        width:1040px;
+            margin:0 auto;
+    }
+    .grid .g_item{
+        width:200px; height:100px; background:#00f;
+        margin-bottom:10px;
+    } */
+    /* ----------percent----------- */
+    .grid {
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    .grid .g_item {
+
+     
+        margin-bottom: 10px;
+    }
+
+    .grid .g_item img {
+        width: 100%;
+    }
+
+    .grid .g_item,
+    .grid .grid-sizer {
+        width: 18%;
+    }
+
+    .grid .gutter-sizer {
+        width: 2.5%;
+    }
+    .grid .g-width-2 {
+        width: 38.5%;
+    }
+    .grid .g-width-3 {
+        width: 59%;
+    }
+
+    @media (max-width:768px) {
+
+        .grid .g_item,
+        .grid .grid-sizer {
+            width: 48%;
+        }
+
+        .grid .gutter-sizer {
+            width: 4%;
+        }
+    }
+</style>
+
+</html>

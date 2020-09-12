@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>Document</title>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <!-- local starage은 5MB,저장방식 객체
+     cookie는 4KB, 저장방식 stream, 업로드한 홈페이지 서버와 클라이언트에 저장됨, 시간제어 가능  -->
+     <div class="popup">
+        <img src="../img/p02-02-10.jpg">
+        <div>
+            <input type="checkbox" name="oneday"> 오늘하루동안보지않기
+            <a>exit</a>
+        </div>
+     </div>
+     <style>
+         .popup{
+             width:400px;
+         }
+         .popup img{ width:100%;}
+         .popup a{
+             float:right;
+         }
+     </style>
+     <script>
+         function setCookie(){
+             var date= new Date();
+           date.setTime(date.getTime()+5000);// 하루를 기준으로 팝업창 한번만 띄우기:date.setTime(date.getDate()+1); 하루의 초 계산하기:24*60*60*1000; 오늘 날짜의 현재시간에 5초를 더해 바꾼다- 5초 뒤에 cookie 삭제
+           document.cookie = "event=oneday;expires="+date.toUTCString()+";";
+           // toUTCString() UTC 세계표준시간으로 바꾸기
+
+         }
+         function getCookie(){
+       
+        var cookie = document.cookie;
+        var reg = /oneday/;//문자열시작과 끝 '/'로 표시-정규표현식
+        console.log( cookie)
+        //console.log( reg.test(cookie))
+       ;//cookie.match('oneday') cookie에 oneday가 있는지 확인:   if( cookie.match('oneday') != null)
+       // if( cookie.indexOf('oneday') != -1)
+        if( reg.test(cookie) ){
+            $('.popup').hide();
+        }else{
+            $('.popup').show();
+        }
+      
+
+         }
+         getCookie();
+
+         $('.popup a').on('click',function(){
+            var check= $('input[name=oneday]').prop('checked');
+            //checkbox의 속성값 확인
+            //console.log(check)
+            if(check) setCookie();
+                $('.popup').hide();
+           
+              
+
+                //click end
+             });
+     </script>
+</body>
+</html>

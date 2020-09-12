@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <script>
+        $(function () {
+            //start
+            var blen = false;//drag start, stop 제어
+            var offset = { x: 0, y: 0 };// p 범위 안에서의 cursor값
+            var pos = { x: 0, y: 0 };
+
+            $('.drag p').on({
+                mousedown: mDown,
+                mouseup: mUp
+                //p에 cursor 올리고 mousedown 하면 mDown 실행
+                //p에 cursor 올리고 mouseup 하면 mUp 실행
+            });
+
+            $('.drag').on({
+                mousemove: mMove
+                //div 범위 안에서 mousemove하면 mMove 실행
+            });
+
+            function mDown(e) {
+                blen = true;//mousedown 하면 blen값은 true가 됨
+                offset.x = e.offsetX;// offset.x 변수에 cursor 클릭했을 때 p 범위 안에서의 x값
+                offset.y = e.offsetY;// offset.y 변수에 cursor 클릭했을 때 p 범위 안에서의 y값
+            }
+
+            function mUp(e) {
+                blen = false;//mouseUp하면 blen값은 false가 됨
+            }
+
+            function mMove(e) {
+
+                pos.x = e.pageX - offset.x;//pos.x는 browser에서 p가 x좌표로부터 떨어진 거리 - offset.x
+                pos.y = e.pageY - offset.y;//pos.y는 browser에서 p가 y좌표로부터 떨어진 거리 - offset.x
+                if (pos.x < 400) {//pos.x값이 div 범위 안에서만 작동하도록 함
+
+                    if (blen) {//blen값이 true면(mousedown하면)
+                        $('.drag p').css({//p에 transform:translate값을 다음과 같이 변경한다
+                            transform: 'translate(' + pos.x + 'px,' + pos.y + 'px)'
+
+                        });
+                    }
+                }
+            };
+                //end
+            });
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        .drag {
+            width: 500px;
+            height: 500px;
+            border: 2px solid #f00;
+        }
+
+        .drag p {
+            width: 100px;
+            height: 100px;
+            background: #000;
+        }
+    </style>
+
+    <div class="drag">
+        <p></p>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

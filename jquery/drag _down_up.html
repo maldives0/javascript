@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- drag가능하게 하는 pugin -->
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+
+    .drag {
+        width: 500px;
+        height: 500px;
+        border: 2px solid #f00;
+
+    }
+
+    .drag p {
+        width: 100px;
+        height: 100px;
+        background:#000;
+        margin:0;
+    }
+</style>
+
+<body>
+
+    <script>
+        $(function () {
+            //start
+            var blen = false;
+            var offset = {x:0,y:0};
+            var pos = {x:0,y:0};
+            // var offsetX = 0; var offsetY = 0; 두개의 변수를 선언한 것과 같다
+            $('.drag p').on({
+                mousedown: mDown,
+                mouseup: mUp
+               
+            });
+            $('.drag').on({
+                mousemove: mMove
+            });
+            function mDown(e) {
+              // e.offsetX) box를 기준으로 한 거리
+               blen = true;
+                offset.x = e.offsetX;
+                offset.y = e.offsetY;
+              
+             }
+            function mUp(e) {
+                // console.log(e.type)
+                blen = false;
+             }
+            function mMove(e) {
+              
+               //console.log( offset.y)
+                pos.x = e.pageX - offset.x;
+               pos.y = e.pageY - offset.y;
+              if(pos.x < 400){
+
+                if(blen){
+                $('.drag p').css({
+                    transform:'translate('+pos.x+'px,'+pos.y+'px)'
+                  
+                });
+              }
+            
+               }
+               // e.pageX) dom을 기준으로 한 거리
+                
+             }
+
+        });
+    </script>
+
+
+
+    <div class="drag">
+        <p></p>
+
+    </div>
+
+
+
+</body>
+
+</html>

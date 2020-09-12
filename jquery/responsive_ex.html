@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>JQUERY</title>
+   <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+
+    <!--responsive_ex.html-->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">HOME</a>
+                    <div>
+                        <a href="#">인사말</a>
+                        <a href="#">연혁</a>
+                        <a href="#">오시는길</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#">COMPANY</a>
+                    <div>
+                        <a href="#">인사말</a>
+                        <a href="#">연혁</a>
+                        <a href="#">오시는길</a>
+                    </div>
+                </li>
+                <li><a href="#">SERVICE</a>
+                    <div>
+                        <a href="#">인사말</a>
+                        <a href="#">연혁</a>
+                        <a href="#">오시는길</a>
+                    </div>
+                </li>
+                <li><a href="#">SHOP</a></li>
+                <li><a href="#">CUSTOMER</a></li>
+            </ul>
+        </nav>
+        <div class="mobile">
+            <a>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+    </header>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        header {
+            background: #000;
+        }
+
+        header nav {
+            text-align: center;
+        }
+
+        header nav ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        header nav li {
+            position: relative;
+            display: inline-block;
+        }
+
+        header nav li>a {
+            color:yellow;
+            margin: 0 20px;
+            padding: 15px 0;
+            display: block;
+        }
+
+        header nav li>div {
+            position: absolute;
+            bottom: 0;
+            background: #f00;
+            width: 100%;
+            transform: translateY(100%);
+            display: none;
+        }
+
+        header nav li>div a {
+            display: block;
+            color: #fff;
+            padding: 10px;
+        }
+
+        header .mobile {
+            position: fixed;
+            right: 10%;
+            top: 16px;
+            display: none;
+        }
+
+        header .mobile a {
+            width: 30px;
+            height: 16px;
+            display: block;
+        }
+
+        header .mobile a span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #fff;
+            position: absolute;
+        }
+
+        header .mobile a span:nth-of-type(1) {
+            top: 0;
+        }
+
+        header .mobile a span:nth-of-type(2) {
+            top: calc(50% - 1px);
+        }
+
+        header .mobile a span:nth-of-type(3) {
+            bottom: 0;
+        }
+
+        header .mobile.active a span:nth-of-type(1) {
+            top: 50%;
+            transform: rotate(45deg)
+        }
+
+        header .mobile.active a span:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        header .mobile.active a span:nth-of-type(3) {
+            bottom: 50%;
+            transform: rotate(-45deg)
+        }
+
+        @media (max-width:768px){
+            header .mobile {
+           
+            display: block;
+        }
+       
+        header {
+            background: #000;
+            height:50px;
+        }
+
+        header nav {
+            text-align: center;
+            display:none;
+            position:fixed;
+            width:100%; height:100%;
+            background:rgba(0,0,0,0.8);
+        }
+
+        header nav li {
+            position: relative;
+            display: block;
+        }
+
+        header nav li>div {
+            position: static;
+            bottom: 0;
+            background: #f00;
+            width: 100%;
+            transform: translateY(0%);
+            display: none;
+        }
+     
+
+      
+        }
+    </style>
+
+    <script>
+        $(function () {
+            var resMsg;
+
+            function nav(){
+            $('header li').on({
+                    click: mouseEvent,
+                    mouseenter: mouseEvent,
+                    mouseleave: mouseEvent
+
+                });
+
+                $('.mobile').on('click',function(){
+                    $('nav').slideToggle();
+                    $(this).toggleClass('active');
+                })
+          
+             
+
+                function mouseEvent(e) {
+                 
+                    if (resMsg == 'pc') {
+                        if (e.type == 'mouseenter') {
+                            $(this).find('div').stop().slideDown();
+                            //mouseenter를 계속 하면 stack에 event가 쌓인다, 앞에 stop을 넣어주면 새로운 event가 실행될 때 쌓여있던 전의 event들이 사라진다
+                        }
+                    } else {
+                        if (e.type == 'click') {
+                            $(this).find('div').stop().slideDown();
+                        }
+
+                    }
+                    if(e.type == 'mouseleave'){
+                        $(this).find('div').stop().slideUp();
+                    }
+
+
+                }
+             //nav 
+            }
+            nav();
+           // var header = $('header nav').html();
+
+
+            var mq = window.matchMedia("screen and (max-width:768px)");
+            //(max-width:768px)만 써도 된다
+            //@media all screen and (max-width:768px)
+            //browser의 상황을 계속 반복해서 파악한다, 
+            mq.addListener(res);
+
+            function res(e) {
+             //   $('header nav').html(header);
+                if (e.matches) {
+                    console.log('mobile')
+                    resMsg = 'mobile';
+                } else {
+                    console.log('pc')
+                    resMsg = 'pc';
+
+                }
+               
+            }
+            res(mq);
+
+        });
+    </script>
+
+
+
+
+</body>
+
+</html>
