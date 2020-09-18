@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        #canvas {
+
+            width: 100%;
+            height: 100vh;
+        }
+
+        video {
+            width: 0;
+            height: 0;
+        }
+    </style>
+    <video autoplay muted loop>
+
+        <source src="water.mp4" type="video/mp4">
+    </video>
+    <canvas id="canvas" width="2800" height="800"></canvas>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+        var vdo = document.querySelector('video');
+        var msg = [
+            { time: 1, txt: '1초', x: cw / 2, y: ch / 2 },
+            { time: 3, txt: '3초', x: cw / 2, y: ch / 2 },
+            { time: 5, txt: '5초', x: cw / 2, y: ch / 2 }]
+        var sc;
+        ctx.font = '60px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillStyle = '#fff';
+
+        canvas.addEventListener('click',
+        function(){
+            vdo.pause();
+        });
+        vdo.addEventListener('canplaythrough', render);
+
+        function render(e) {
+
+            ctx.drawImage(vdo, 0, 0, cw, ch);
+
+            sc = parseInt(vdo.currentTime);
+
+
+            for (var i in msg) {
+                if (sc == msg[i].time) {
+                    ctx.fillText(msg[i].txt, msg[i].x, msg[i].y);
+                }
+
+
+            }
+            //browser의 최상단을 넘어서면 동영상이 자동으로 멈춘다
+            requestAnimationFrame(render);
+            //render
+        }
+        //큰수찾기
+        // var a = Math.max(1,3,5);
+        //         console.log(a)
+
+        // var a = [1,2,3];
+        // var max = a.reduce(function(a,b){
+        //   return  Math.max(a,b);
+
+        // });
+
+
+        // var b = [1,2,23];
+        // var a =Math.max(...b);
+        // console.log(a)
+//https://www.w3schools.com/tags/ref_av_dom.asp
+
+
+    </script>
+</body>
+
+
+</html>

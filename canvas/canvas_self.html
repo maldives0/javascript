@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<style>
+    html,body{margin:0;}
+</style>
+
+
+
+<div>
+    <canvas id="canvas" width="1000" height="800"></canvas>
+    <img src="../img/p02-01-04.jpg" >
+</div>
+
+<script>
+
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    var cw = canvas.width;
+    var ch = canvas.height;
+ 
+   ctx.beginPath();
+   ctx.fillStyle = 'red';
+     ctx.arc(100,100,50,0,Math.PI*2,true);
+  ctx.fill();
+
+
+   ctx.beginPath();
+   ctx.fillStyle = '#000';
+   ctx.fillRect(250,50,100,100);
+
+   ctx.beginPath();
+   var gradient = ctx.createLinearGradient(400,0,600,0);
+   gradient.addColorStop(0,'#fff');
+   gradient.addColorStop(1,'green');
+   ctx.fillStyle = gradient;
+   ctx.fillRect(450,50,100,100);
+
+    ctx.beginPath();
+    ctx.moveTo(650,50);
+    ctx.lineTo(800,50);
+    ctx.lineTo(725,150);
+    ctx.lineTo(650,50);
+    ctx.strokeStyle='blue';
+    ctx.stroke();
+
+    ctx.beginPath();
+//     var image = new Image();
+//     image.src = '../img/p02-01-04.jpg';
+//     image.addEventListener('load',draw);
+//    function draw(){
+//     ctx.drawImage(image,100,250,400,400);
+//    }
+    
+    var img = document.querySelector('img');
+    img.addEventListener('load',draw);
+   function draw(){
+    ctx.drawImage(img,100,250,400,400);
+   }
+
+</script>
+
+
+<div style="height:1000px;"></div>
+
+
+
+</body></html>
+
+
+
+
+

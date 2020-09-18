@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<style>
+    html,body{margin:0;}
+</style>
+
+<!--canvas_img-ani.html-->
+
+<div class="container">
+    <canvas id="canvas" width="800" height="200"></canvas>
+</div>
+
+<script>
+
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    var cw = canvas.width;
+    var ch = canvas.height;
+
+    var img = new Image();
+    img.src = 'park.jpg';
+    img.addEventListener('load',function(){draw('우')});
+
+
+    var imgW, imgH, x=0;
+        imgW = img.width;
+        imgH = img.height;
+    var rq;
+
+
+    function draw(p){
+
+        cancelAnimationFrame(rq);
+
+        ctx.clearRect(0,0,cw,ch);
+
+        if(p == '우') {
+            if(x > cw) x = cw - imgW;
+
+            x+=4;
+        }else{
+            if(x < -img) x = 0;
+
+            x-=4;
+        }
+        if(x < -(cw-imgW)) ctx.drawImage(img,imgW+x,0,imgW,imgH);//left clone
+        if(x > cw-imgW) ctx.drawImage(img,-imgW+x,0,imgW,imgH);
+        ctx.drawImage(img,x,0,imgW,imgH);
+
+        rq = requestAnimationFrame(function(){draw(p)});
+    }
+
+    canvas.addEventListener('click',function(e){
+        var pos = e.layerX;
+
+        if(pos > cw/2){
+            draw('우');
+        }else{
+            draw('좌');
+        }
+
+    });
+
+
+
+
+
+</script>
+
+
+<div style="height:1000px;"></div>
+
+
+
+</body></html>
+
+
+
+
+

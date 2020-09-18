@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+            border: 1px solid red;
+        }
+    </style>
+
+
+
+    <div class="container">
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas');
+            ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height, x = Math.floor(Math.random()*cw), y =Math.floor(Math.random()*ch), r = 30,dx =7,dy=3;
+        canvas.addEventListener('click',draw);
+    
+       
+        function draw() {
+           
+            ctx.beginPath();
+            ctx.clearRect(0,0,cw,ch);  
+           ctx.arc(x, y, r, 0, Math.PI * 2);
+             ctx.fill();
+  
+        }
+
+        function update(){
+            draw();
+            x += dx;
+            y += dy;
+            if(x+r > cw || x-r < 0){dx *= -1;}
+            if(y+r > ch || y-r < 0){dy *= -1;}
+            console.log(dx)
+            requestAnimationFrame(update);
+        }
+       update();
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

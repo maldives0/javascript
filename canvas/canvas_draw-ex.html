@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        #canvas{
+            border:1px solid #000;
+            width:500px; height:300px;
+        }
+    </style>
+    <canvas id="canvas" width="1000" height="600"></canvas>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+
+        var cw = canvas.width;
+        var ch = canvas.height
+
+
+    //     ctx.beginPath();
+    //    ctx.arc(cw/2,ch/2,ch*.4,-290,Math.PI*.8,true);
+    //    ctx.lineWidth = 10;
+    //    ctx.stroke();
+    //     ctx.closePath();
+
+        // ctx.beginPath();
+        // ctx.arc((cw/2)*.8,(ch/2)*0.8,(ch/2)/10,0,Math.PI*2,false);
+        // ctx.stroke();
+
+        // ctx.beginPath();
+        // ctx.arc((cw/2)*1.2,(ch/2)*0.8,(ch/2)/10,0,Math.PI*2,false);
+        // ctx.stroke();
+
+        // var deg = 0;
+        // function draw(x,y,r,f,deg){
+        //     deg -= 4;
+        //     ctx.beginPath();
+        // ctx.arc(x,y,r,0,(Math.PI/180)*deg,true);
+        // ctx.lineWidth = 10;
+        // ctx.stroke();
+
+        // if(deg < f){
+        //     requestAnimationFrame(function(){
+        //         draw(x,y,r,f,deg);
+        //     });
+        // }
+
+        // }
+        // draw((cw/2),(ch/2),(ch*.4),360,0);//face
+        // setTimeout(function(){
+        //     draw((cw/2)*.8,(ch/2)*0.8,(ch/2)/10,360,0);//eye
+        //     draw((cw/2)*1.2,(ch/2)*0.8,(ch/2)/10,360,0);//eye
+
+        // },500)
+
+        // setTimeout(function(){
+        //     draw((cw/2),(ch/2),(ch*.3),90,0);//mouth
+        // },1000)
+
+        function draw(x,y,r,f,deg) {
+  var canvas = document.getElementById('canvas');
+  if (canvas.getContext) {
+     var ctx = canvas.getContext('2d');
+    deg+=4;
+    ctx.beginPath();
+
+    ctx.arc(x,y,r, 0, Math.PI/180*f, false);  // Mouth (clockwise)
+
+  }
+}
+if(deg < f){
+    requestAnimationFrame(function(){
+        draw((cw/2),(ch/2),(ch*.3),360,0);
+            });
+        }
+
+
+    </script>
+</body>
+
+
+</html>

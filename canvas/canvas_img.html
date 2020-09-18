@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+            width: 1400px;
+            height: 400px;
+        }
+    </style>
+    <canvas id="canvas" width="2800" height="800"></canvas>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+
+        var gallery = ['../img/cam_01.jpg', '../img/cam_02.jpg', '../img/cam_03.jpg'];
+        var image = [];
+        var pos = {x:900,y:100,w:200,h:200};
+        var aPos = [];
+
+        gallery.forEach(function (value, key) {
+
+            image[key] = new Image();
+            image[key].src = value;
+            image[key].alt = key;
+            image[key].addEventListener('load', draw);
+
+        })
+
+       // console.log(image)
+
+        function draw() {
+                // ctx.drawImage(image0, 100, 100, 700, 500);
+                //console.log(this.alt)
+                var imgY = pos.y*(parseInt(this.alt)+1)+(pos.y*parseInt(this.alt));
+                ctx.drawImage(this, pos.w, pos.h,  pos.w, pos.h,  pos.x, imgY ,  pos.w, pos.h,);
+                ctx.drawImage(image[0], 100, 100, 700, 500);
+
+                aPos[this.alt]= [pos.x/2, pos.x/2+pos.w,imgY/2, imgY/2+pos.h];
+                console.log(aPos)
+            }
+
+            canvas.addEventListener('click', function (e) {
+
+                //console.log(e.pageX)
+                //browser영역을 기준으로 함
+                //console.log(e.layerX)
+                //canvas영역을 기준으로 함
+                var ePos = { x: e.layerX, y: e.layerY };
+
+
+                aPos.forEach(function (value, key){
+                if (ePos.x > aPos[key][0] && ePos.x < aPos[key][1] && ePos.y > aPos[key][2] && ePos.y < aPos[key][3]) {
+
+                        ctx.drawImage(image[key], 100, 100, 700, 500);
+                    }
+
+                });
+            });
+
+
+
+
+    </script>
+</body>
+
+
+</html>

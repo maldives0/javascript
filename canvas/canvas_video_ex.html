@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+        #canvas {
+
+            width: 50%;
+            height: 50vh;
+            display: block;
+        }
+
+        video {
+            width: 320px;
+            height: 240px;
+        }
+    </style>
+    <div class="container">
+        <canvas id="canvas" width="1920" height="1080"></canvas>
+    </div>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+
+        var vdoURL = ['water.mp4', 'river.mp4', 'waterfall.mp4'];
+        var container = document.querySelector('.container');
+
+
+
+        vdoURL.forEach(function (url, idx) {
+            var newVdo = document.createElement('video');
+
+            newVdo.src = url;
+            newVdo.autoplay = true;
+            newVdo.muted = true;
+            container.append(newVdo);
+
+            var vdo = container.querySelectorAll('video');
+            vdo[idx].addEventListener('click', render);
+            function render() {
+               stop();
+                ctx.drawImage(vdo[idx], 0, 0, cw, ch);
+
+                requestAnimationFrame(render);
+            }
+
+        });
+
+        function stop() {
+            vdo.forEach(function (v) {
+                v.pause();
+                v.currentTime = 0;
+            })
+        }
+
+
+
+
+
+
+    </script>
+</body>
+
+
+</html>

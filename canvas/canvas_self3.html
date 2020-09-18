@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+            width: 50%;
+            height: 50%;
+          
+
+        }
+
+
+
+    </style>
+
+
+
+    <div class="container">
+        <canvas id="canvas" width="1000" height="800"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+        var color,count=0,x=cw/2,y=ch/2,r=30;
+       
+        function pos(n){
+           num = Math.floor(Math.random()*(n-r));
+           return num;
+           
+        }  
+    
+       
+        function colorFun(){
+          
+           color = 'rgb('+parseInt(Math.random()*255)+','+parseInt(Math.random()*255)  +','+parseInt(Math.random()*255)+')';
+          return color;
+        }
+       
+        console.log( colorFun())
+      
+      
+          function draw(){
+              x = pos(cw);
+             
+              y = pos(ch);
+            ctx.beginPath();
+            ctx.fillStyle = colorFun();
+            ctx.arc(x,y,r,0,Math.PI*2);
+            ctx.fill();
+          }
+          function update(){
+             draw();
+              count++;
+              if(count>20) return;
+              requestAnimationFrame(update);
+          }
+          update();
+        
+     
+          
+          
+           
+            
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

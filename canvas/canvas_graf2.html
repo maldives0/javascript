@@ -1,0 +1,157 @@
+    <!doctype>
+<html>
+<body>
+   
+<!--canvas.transform-ex.html-->
+   
+   <!-- webGL 3D -->
+   
+    <style>
+        html,body{margin:0;}
+        canvas{border:1px solid #f00}
+        div{margin-bottom:100px;}
+    </style>    
+    
+    <div>
+        <p><label>국어</label><input type="text" name="s0"></p>
+        <p><label>수학</label><input type="text" name="s1"></p>
+        <p><label>영어</label><input type="text" name="s2"></p>
+        <p><label>과학</label><input type="text" name="s3"></p>
+        <p><label>미술</label><input type="text" name="s4"></p>
+        <p><label>체육</label><input type="text" name="s5"></p>
+        <p><label>사회</label><input type="text" name="s6"></p>
+        <p><label>미술</label><input type="text" name="s7"></p>
+        <p><label>컴퓨</label><input type="text" name="s8"></p>
+        <p><label>탐구</label><input type="text" name="s9"></p>
+        <input type="submit" value="등록" id="save">
+        
+    </div>
+    
+    <canvas width="800" height="400"></canvas>
+    
+    <script>
+        
+
+        
+        
+        var canvas = document.querySelector('canvas'),
+            ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height,
+            gw = cw-40,
+            gh = ch-40,
+            x = 100,y,cx=0,cy,k=0,
+            data = [],
+            color=['#f00','#557723','#f0f','#002578','#365489'];
+        
+            var ip = document.querySelectorAll('input[type=text]');
+            save.addEventListener('click',function(){
+                var c=[],d={};
+                ip.forEach(function(i){
+                    c.push(parseInt(i.value));
+                }) ;
+
+                d = {class:c};
+                data.push(d); 
+                
+                circle(k);
+                clear();
+                k++;
+            });
+        
+            function clear(){
+                ip.forEach(function(i){
+                    i.value = '';
+                }) ;
+            }
+        
+            //점수 생성
+            function score(s){
+                this.kor = s[0];
+                this.eng = s[1];
+                this.math = s[2];
+                this.scn = s[3];
+                this.his = s[4];
+                this.ddd = s[5];
+                this.art = s[6];
+                this.spt = s[7];
+                this.aaa = s[8];
+                this.bbb = s[9];
+            }
+            var avg = new Array();
+            function circle(k){
+                data.forEach(function(a,i){
+                    avg.push(new score(a.class));                
+                });
+
+                avg.forEach(function(c){
+                    ctx.fillStyle = color[k];
+                    for(var n in c){
+                        cy = ch - c[n] * ch/100;
+                        cx += gw/10;
+                        
+                        ctx.beginPath();
+                        ctx.arc(cx,cy,5,0,Math.PI*2);
+                        ctx.fill();                        
+                    }
+                    cx = 0;
+                        
+                });
+                line(k);
+            }
+           
+            
+            function line(k){
+                avg.forEach(function(c){
+                    ctx.beginPath();
+                    ctx.strokeStyle = color[k];
+                    ctx.lineJoin = 'round';
+                    for(var n in c){
+                        cy = ch - c[n] * ch/100;
+                        cx += gw/10;
+                        ctx.lineTo(cx,cy);
+                        ctx.stroke();                        
+                    }
+                    cx = 0;
+                        
+                });
+            }
+        
+        
+        
+            function bg(){
+                ctx.translate(20,20);
+                ctx.lineTo(0,0);
+                ctx.lineTo(0,gh);
+                ctx.lineTo(gw,gh);
+                ctx.stroke();
+                
+                for(var i=0;i<10;i++){
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#ddd';
+                    ctx.lineTo(0,gh/10*i);
+                    ctx.lineTo(gw,gh/10*i);
+                    ctx.stroke();
+                }
+                for(var i=1;i<10;i++){
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#ddd';
+                    ctx.lineTo(gw/10*i,0);
+                    ctx.lineTo(gw/10*i,gh);
+                    ctx.stroke();
+                }
+            }
+            bg();
+        
+            
+        
+        
+        
+                
+    
+    </script>
+    
+    
+    
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+           border:1px solid red;
+
+        }
+
+
+
+    </style>
+
+
+
+    <div class="container">
+        <canvas id="canvas" width="1000" height="800"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas');
+         ctx = canvas.getContext('2d'),
+         cw = canvas.width,
+         ch = canvas.height,
+         size=1, deg=Math.PI/180;
+      
+      function draw(){
+        
+        ctx.save();
+        ctx.translate(200,200);
+        ctx.scale(size,size);
+        ctx.rotate(deg);
+        ctx.strokeRect(8,8,10,10);
+        ctx.restore();
+       size += 0.2;
+       deg += .2;
+       requestAnimationFrame(draw);
+      }
+     draw();
+
+    
+            
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

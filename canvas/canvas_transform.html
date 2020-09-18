@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+           border:1px solid red;
+
+        }
+
+
+
+    </style>
+
+
+
+    <div class="container">
+        <canvas id="canvas" width="1000" height="800"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+      
+      function draw(x,y){
+        
+        // ctx.save();
+        // ctx.restore();
+        ctx.setTransform(1,0,0,1,0,0);
+        ctx.translate(100,ch/2);
+      ctx.strokeRect(x,y,50,50);
+      ctx.scale(1.5,1.5);
+      ctx.strokeRect(x,y,50,50);
+
+      ctx.rotate(Math.PI/180*45)
+     
+      ctx.strokeRect(x,y,50,50);
+      }
+     draw(0,0);
+
+     draw(10,10);
+            
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

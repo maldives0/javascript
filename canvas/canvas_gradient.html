@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+<style>
+    html,body{margin:0;}
+</style>
+
+<!--canvas_img-ani.html-->
+
+<div class="container">
+    <canvas id="canvas" width="800" height="200"></canvas>
+</div>
+
+<script>
+
+    var canvas = document.querySelector('#canvas');
+    var ctx = canvas.getContext('2d');
+    var cw = canvas.width;
+    var ch = canvas.height;
+    var grd = ctx.createLinearGradient(0,100,0,150);
+    grd.addColorStop(0,'#f00');
+    grd.addColorStop(0.5,'#000');
+    grd.addColorStop(1,'#ff0');
+    ctx.fillStyle = grd;
+    ctx.fillRect(0,50,200,100);
+
+    ctx.strokeStyle = grd;
+    ctx.lineWidth=10;
+    ctx.strokeRect(250,50,200,100);
+
+
+</script>
+
+
+<div style="height:1000px;"></div>
+
+
+
+</body></html>
+
+
+
+
+

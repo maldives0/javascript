@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+            border: 1px solid red;
+            display:block;
+        }
+        #result img{width:200px;}
+    </style>
+
+
+
+    <div class="container">
+        <select id='line'>
+            <option value='1'>stroke1</option>
+            <option value='3'>stroke3</option>
+            <option value='6'>stroke6</option>
+            <option value='9'>stroke9</option>
+            <option value='12'>stroke12</option>
+        </select>
+        <input type="color" id="color">
+        <button id="btn">등록</button>
+        <canvas id="canvas" width="500" height="500"></canvas>
+        <div id="result"></div>
+       
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas'),
+            ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height,state=false;
+
+canvas.addEventListener('mousedown',mDown);
+canvas.addEventListener('mousemove',mMove);
+canvas.addEventListener('mouseup',mUp);
+function mDown(e){
+    var lineStyle = line.value,colorStyle=color.value;
+    state = true;
+    ctx.beginPath();
+    ctx.lineCap = 'round';
+    ctx.moveTo(e.clientX,e.clientY-25);
+    ctx.lineWidth = lineStyle;
+    ctx.strokeStyle = colorStyle;
+}
+function mUp(){
+    state = false;
+}
+
+function mMove(e){
+    if(state){ 
+        
+    ctx.lineTo(e.clientX,e.clientY);
+    ctx.stroke();
+   
+    }
+   
+}
+
+btn.addEventListener('click',function(){
+    var saveCanvas = canvas.toDataURL('image/png');
+    var screen = new Image();
+    screen.src = saveCanvas;
+    result.append(screen);
+})
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

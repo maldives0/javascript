@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        #canvas{
+            border:1px solid #000;
+            width:50%; height:50%;
+        }
+    </style>
+    <canvas id="canvas" width="2000" height="600"></canvas>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+
+        ctx.fillStyle = 'red';
+        ctx.fillRect(100, 100, 150, 150);
+        ctx.arc(250, 250, 50, 0, Math.PI * 2, false);
+        //PI 180도*2
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0, 10);
+        ctx.lineTo(300, 0);
+        ctx.lineTo(400, 100);
+        ctx.stroke();
+        ctx.closePath();
+    </script>
+</body>
+
+
+</html>

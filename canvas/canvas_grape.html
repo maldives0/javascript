@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+
+
+        #canvas {
+            border: 1px solid red;
+
+        }
+    </style>
+
+
+
+    <div class="container">
+        <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas');
+        ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height, x = 0, y = 0,
+            data = [
+             [80,30,50,90],
+             [50,90,20,40],
+             [60,100,30,10]
+                          ];
+        color = ['#f00','#00f','#000'];
+
+
+        function draw() {
+          
+            data.forEach(function (avg,key) {
+                x = 100;
+            ctx.fillStyle = color[key];
+                avg.forEach(function (sum) {
+             
+                y = ch - (sum / 100 * ch);
+                ctx.beginPath();
+                ctx.arc(x, y, 5, 0, Math.PI * 2);
+                ctx.fill();
+
+               
+                x += 100;
+              
+                })
+                x = 100;
+            })
+
+
+
+
+        }
+        data.forEach(function (avg,key) {
+            ctx.beginPath();
+            x = 100;
+              ctx.strokeStyle = color[key];
+                  avg.forEach(function (sum) {
+               
+                  y = ch - (sum / 100 * ch);
+                
+                  ctx.lineTo(x,y);
+                  ctx.stroke();
+  
+                 
+                  x += 100;
+                
+                  })
+                  x = 100;
+              })
+        draw();
+
+      
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>

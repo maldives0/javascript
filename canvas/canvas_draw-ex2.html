@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>canvas</title>
+    <meta charset="UTF-8">
+
+</head>
+
+<body>
+    <style>
+        #canvas {
+            border: 1px solid #000;
+            width: 80%;
+            height: 50%;
+        }
+    </style>
+    <canvas id="canvas" width="2000" height="800"></canvas>
+    <script>
+        //canvas mdn api참고
+        var canvas = document.querySelector('#canvas');
+        var ctx = canvas.getContext('2d');
+        var cw = canvas.width;
+        var ch = canvas.height;
+        ctx.font = '80px serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+
+        var deg = 0;
+        function draw(x, y, r, deg, pst) {
+            deg++;
+            ctx.clearRect(x-100, y-100,200, 200);
+            ctx.beginPath();
+
+            ctx.lineWidth = 30;
+            ctx.arc(x, y, r, 0, ((Math.PI * 2) * deg) / 100, false);
+            ctx.stroke();
+            ctx.fillText(deg + '%', x, y);
+
+            if (deg < pst) {
+                requestAnimationFrame(function () {
+                    draw(x, y, r, deg, pst);
+                });
+
+            }
+
+        }
+        draw(cw / 6, ch / 2, ch / 3, 0, 80);
+        draw(cw / 2, ch / 2, ch / 3, 0, 60);
+        draw(cw-(cw/6), ch / 2, ch / 3, 0, 96);
+
+
+
+    </script>
+</body>
+
+
+</html>

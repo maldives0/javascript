@@ -1,0 +1,66 @@
+    <!doctype>
+<html>
+<body>
+    <style>
+        html,body{margin:0;}
+    </style>
+    
+    
+    <canvas width="1000" height="800"></canvas>
+    
+    <script>
+        var canvas = document.querySelector('canvas'),
+            ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height,
+            x = cw/2,
+            y = ch/2,
+            r = 30,
+            ea = 20,
+            count=0,
+            color;
+            
+        
+            function ran(n){
+                num = Math.floor(Math.random()*(n-30));
+                return num;
+            }
+        
+            function funColor(){
+                color = "rgb("+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+","+Math.floor(Math.random()*256)+")"; 
+                return color;
+            }
+        
+            function drawCircle(){
+                x = ran(cw);
+                y = ran(ch);
+                ctx.beginPath();
+                ctx.fillStyle = funColor(); //rgb(210,244,123);
+                ctx.arc(x,y,r,0,2*Math.PI);
+                ctx.fill();
+            }
+        
+            function update(){
+                drawCircle();
+                count++;
+                if(count > ea) return;
+                requestAnimationFrame(update);
+            }
+            update();
+                
+            
+        
+        
+     
+        
+       
+        
+        
+        
+    
+    </script>
+    
+    
+    
+</body>
+</html>
