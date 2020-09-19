@@ -2,7 +2,7 @@ $(function(){
     
     (function(){
         //header
-        // if(!$('body').hasClass('index')) return false;
+        if(!$('body').hasClass('index')) return false;
         var $spotHeight =  $('.hero-full-container a').offset().top + 100,
             top;
             console.log($spotHeight) 
