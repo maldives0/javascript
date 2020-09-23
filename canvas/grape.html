@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        html,
+        body {
+            margin-left: 10px;
+        }
+
+        div {
+            margin-bottom: 100px;
+        }
+
+
+        #canvas {
+            border: 1px solid red;
+            padding-bottom: 10px;
+        }
+    </style>
+
+
+    <div>
+        <p>
+            <label>math</label>
+            <input value="40" type="text" name="s0">
+        </p>
+        <p>
+            <label>english</label>
+            <input value="50" type="text" name="s1">
+        </p>
+        <p>
+            <label>korea</label>
+            <input value="10" type="text" name="s2">
+        </p>
+        <p>
+            <label>art</label>
+            <input value="80" type="text" name="s3">
+        </p>
+        <p>
+            <label>computer</label>
+            <input value="90" type="text" name="s4">
+        </p>
+        <input type="submit" value="save" id="save">
+
+    </div>
+    <div class="container">
+        <canvas id="canvas" width="800" height="500"></canvas>
+    </div>
+
+    <script>
+
+        var canvas = document.querySelector('#canvas'),
+            ctx = canvas.getContext('2d'),
+            cw = canvas.width,
+            ch = canvas.height,
+            bw = cw - 40,
+            bh = ch - 40,
+            x = 100, y, cx = 0, cy, k = 0,
+            color = ['#f00','#557723','#f0f','#002578','#365489'],
+            sub = document.querySelectorAll('p label'),
+            btn = document.querySelector('input[type=submit]'),
+            ip = document.querySelectorAll('input[type=text]'),
+            txt = [], data = []
+            ;
+
+        btn.addEventListener('click', score);
+
+
+        function score() {
+            var c = [], d = {};
+            ip.forEach(function (i) {
+                c.push(parseInt(i.value));
+            });
+
+            d = { class: c };
+            data.push(d);
+
+            point(k);
+            //clear();
+            k++;
+        }
+        function clear() {
+            ip.forEach(function (i) {
+                i.value = '';
+            })
+        }
+        function test(s) {
+          
+            this.math = s[0];
+            this.eng = s[1];
+            this.kor = s[2];
+            this.art = s[3];
+            this.com = s[4];
+        }
+        var avg = new Array();
+
+        function point(k) {
+            data.forEach(function (a) {
+                avg.push(new test(a.class));
+
+            })
+
+            avg.forEach(function (p) {
+                
+                ctx.fillStyle = color[k];
+                for (var n in p) {
+                   
+                    cy = bh - p[n] * bh / 100;
+                    cx += bw / 10;
+
+                    ctx.beginPath();
+                    ctx.arc(cx,cy,5,0,Math.PI*2);
+                    ctx.fill();
+                }
+                cx=0;
+            });
+
+            line(k);
+        }
+       function line(k){
+           avg.forEach(function(c){
+               ctx.beginPath();
+               ctx.strokeStyle = color[k];
+               ctx.lineJoin = 'round';
+               for(var n in c){
+                cy = bh - c[n] * bh / 100;
+                   cx += bw/10;
+                   ctx.lineTo(cx,cy);
+                   ctx.stroke();
+               }
+           })
+       }
+
+
+
+
+
+
+        function bg() {
+            //baseline
+            ctx.beginPath();
+            ctx.translate(20, 20);
+            ctx.lineTo(0, 0);
+            ctx.lineTo(0, bh);
+            ctx.lineTo(bw, bh);
+            ctx.stroke();
+
+            for (var i = 0; i < 10; i++) {
+                //width ling
+                ctx.beginPath();
+                ctx.strokeStyle = '#ddd';
+                ctx.lineTo(0, bh / 10 * i);
+                ctx.lineTo(bw, bh / 10 * i);
+                ctx.stroke();
+
+
+                //height line
+                ctx.beginPath();
+                ctx.strokeStyle = '#ddd';
+                ctx.lineTo(bw / 10 * i, 0);
+                ctx.lineTo(bw / 10 * i, bh);
+                ctx.stroke();
+
+                ctx.beginPath();
+
+            }
+
+
+        }
+        bg();
+
+
+        var sub = document.querySelectorAll('p label');
+        for (var i = 0; i < 5; i++) {
+            txt.push(sub[i].innerHTML);
+
+
+            ctx.beginPath();
+
+
+            ctx.font = '20px serif';
+            ctx.textBaseline = 'top';
+            ctx.textAlign = "center";
+
+            ctx.fillText(txt[i], bw / 10 * (i + 1), bh);
+        }
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+
+</html>
