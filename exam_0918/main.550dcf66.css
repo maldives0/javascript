@@ -13,10 +13,11 @@
 .carousel-inner .item{
 position:absolute;
 transition:.5s;
-display:block;
+display:none;
 }
 .carousel-inner .item.active{
-    z-index:1;
+   /* z-index:1; */
+   display:block;
 }
 
 /*# sourceMappingURL=main.0cf8b554.map*/
